@@ -5,21 +5,21 @@ import java.security.NoSuchAlgorithmException;
 
 
 /**
- * 字符传加密工具类
+ *
  */
 public final class MD5Utils {
 
 
-    /** Private constructor to avoid instantiation of static utility class. */
+    /**
+     *
+     */
     private MD5Utils() {
     }
 
     /**
-     * Gets md5 hash for a given input.
-     * 
+     *
      * @param input
-     *            text to create hash for
-     * @return the hash or <code>null</code> if input has been <code>null</code>
+     * @return
      */
     public static String getHash(final String input) {
 
@@ -27,11 +27,9 @@ public final class MD5Utils {
     }
 
     /**
-     * Gets md5 hash for a given input.
-     * 
+     *
      * @param input
-     *            text to create hash for
-     * @return the hash or <code>null</code> if input has been <code>null</code>
+     * @return
      */
     public static String getHash(final byte[] input) {
 
@@ -51,11 +49,9 @@ public final class MD5Utils {
     }
 
     /**
-     * Creates a hex representation for bytes.
-     * 
+     *
      * @param input
-     *            a bunch of bytes
-     * @return hex values of bytes
+     * @return
      */
     private static String toHexString(final byte[] input) {
 

@@ -187,7 +187,7 @@ public class SwipeRefreshLayout extends ViewGroup {
     };
 
     /**
-     * 设置加载的圆环透明度
+     *
      * @param targetAlpha
      */
     private void setColorViewAlpha(int targetAlpha) {

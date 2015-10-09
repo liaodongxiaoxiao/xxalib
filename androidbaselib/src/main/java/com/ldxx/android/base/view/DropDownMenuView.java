@@ -85,7 +85,7 @@ public class DropDownMenuView<T extends DropDownMenuData> extends View {
     }
 
     /**
-     * 设置事件监听
+     *
      */
     private void addEventListener() {
         //this menu onClick
@@ -127,7 +127,7 @@ public class DropDownMenuView<T extends DropDownMenuData> extends View {
     }
 
     /**
-     * 初始化pop window
+     *
      */
     private void initPoPWindow() {
         popupWindow = new ListPopupWindow(this.context);
@@ -155,13 +155,13 @@ public class DropDownMenuView<T extends DropDownMenuData> extends View {
     }
 
     /**
-     * 初始化画笔
+     *
      */
     private void initPaint() {
         textPaint = new Paint();
         textPaint.setColor(titleTextColor);
         textPaint.setTextSize(titleTextSize);
-        //消除锯齿
+        //
         textPaint.setAntiAlias(true);
 
         textBound = new Rect();
@@ -217,7 +217,7 @@ public class DropDownMenuView<T extends DropDownMenuData> extends View {
     }
 
     /**
-     * 从xml中获取属性值
+     *
      *
      * @param attrs
      * @param defStyleAttr
@@ -236,11 +236,11 @@ public class DropDownMenuView<T extends DropDownMenuData> extends View {
 
 
     /**
-     * 菜单选中的事件监听器
+     *
      */
     public interface MenuSelectedListener {
         /**
-         * 返回选中项的对象
+         *
          *
          * @param menuData
          */

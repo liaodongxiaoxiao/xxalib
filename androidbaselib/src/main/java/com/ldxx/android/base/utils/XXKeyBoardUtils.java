@@ -22,10 +22,9 @@ public class XXKeyBoardUtils {
     }
 
     /**
-     * �ر������
      *
-     * @param mEditText �����
-     * @param mContext  ������
+     * @param mEditText
+     * @param mContext
      */
     public static void closeKeybord(EditText mEditText, Context mContext) {
         InputMethodManager imm = (InputMethodManager) mContext

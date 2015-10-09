@@ -17,20 +17,19 @@ public class XXFileUtils {
     }
 
     /**
-     * 在SDCard上创建一个目录
      *
-     * @param dir 指定目录
+     * @param dir
      * @return
      */
     public static String initFileDirInSdCard(String dir) {
-        //若SDCard不可用或传入的路径为空，返回false
+        //
         if (!XXSDCardUtils.isSDCardEnable() || StringUtils.isEmpty(dir)) {
             return null;
         }
-        //获取SDcard的路径
+        //
         String sdFile = XXSDCardUtils.getSDCardPath() + dir;
         File file = new File(sdFile);
-        //若传入的路径在SDCard上已经存在，返回true
+        //
         if (!file.isDirectory()) {
             file.mkdirs();
         }

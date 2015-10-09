@@ -6,7 +6,7 @@ version = "1.0.0"
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
-    resourcePrefix "bounceprogressbar__"    //这个随便填
+    resourcePrefix "ldxx__"    //这个随便填
 
     defaultConfig {
         minSdkVersion 15
@@ -31,9 +31,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.0.1'
 }
-def siteUrl = 'https://github.com/zhengxiaopeng/BounceProgressBar' // 项目的主页
-def gitUrl = 'https://github.com/zhengxiaopeng/BounceProgressBar.git' // Git仓库的url
-group = "org.rocko.bpb" // Maven Group ID for the artifact，一般填你唯一的包名
+def siteUrl = 'https://github.com/liaodongxiaoxiao/xxalib' // 项目的主页
+def gitUrl = 'https://github.com/liaodongxiaoxiao/xxalib.git' // Git仓库的url
+group = "com.ldxx.android.base" // Maven Group ID for the artifact，一般填你唯一的包名
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -41,7 +41,7 @@ install {
             project {
                 packaging 'aar'
                 // Add your description here
-                name 'Android BounceProgressBar Widget' //项目描述
+                name 'Android Base Lib' //项目描述
                 url siteUrl
                 // Set your license
                 licenses {
@@ -52,9 +52,9 @@ install {
                 }
                 developers {
                     developer {
-                        id 'zhengxiaopeng'    //填写的一些基本信息
-                        name 'Rocko'
-                        email 'zhengxiaopeng.china@gmail.com'
+                        id 'liaodongxiaoxiao'    //填写的一些基本信息
+                        name 'XXABaseLib'
+                        email 'liaodongxiaoxiao@gmail.com'
                     }
                 }
                 scm {
@@ -90,7 +90,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "BounceProgressBar"    //发布到JCenter上的项目名字
+        name = "XXABaseLib"    //发布到JCenter上的项目名字
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]

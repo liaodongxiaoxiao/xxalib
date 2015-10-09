@@ -76,13 +76,13 @@ public class XXImageVIew extends View {
         int bW = bitmap.getWidth();
         int bH = bitmap.getHeight();
 
-        //1.先判断 图片是正方形
+        //1.
         if (bW == bH) {
-            //取最小值
+            //min value
             int value = Math.min(dW, dH);
             scale = value * 1f / bH;
         } else {
-            //长方形
+            //
             if ((bW > dW) && (bH < dH)) {
                 scale = dW * 1f / bW;
             } else if ((bW < dW) && (bH > dH)) {

@@ -10,7 +10,9 @@ import java.io.File;
  */
 public class XXSDCardUtils {
     private XXSDCardUtils() {
-        /** cannot be instantiated **/
+        /**
+         *
+         */
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
@@ -24,6 +26,7 @@ public class XXSDCardUtils {
     }
 
     /**
+     *
      * @return
      */
     public static String getSDCardPath() {
@@ -32,6 +35,7 @@ public class XXSDCardUtils {
     }
 
     /**
+     *
      * @return
      */
     public static long getSDCardAllSize() {
@@ -47,6 +51,7 @@ public class XXSDCardUtils {
     }
 
     /**
+     *
      * @param filePath
      * @return
      */
@@ -63,6 +68,7 @@ public class XXSDCardUtils {
     }
 
     /**
+     *
      * @return
      */
     public static String getRootDirectoryPath() {

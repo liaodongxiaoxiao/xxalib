@@ -49,7 +49,6 @@ public class XXViewHolder {
     }
 
     /**
-     * 为TextView设置字符串
      *
      * @param viewId
      * @param text
@@ -70,7 +69,6 @@ public class XXViewHolder {
     }
 
     /**
-     * 为ImageView设置图片
      *
      * @param viewId
      * @param drawableId

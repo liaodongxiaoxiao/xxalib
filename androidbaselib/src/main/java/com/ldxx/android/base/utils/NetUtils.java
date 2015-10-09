@@ -10,9 +10,6 @@ import android.net.NetworkInfo;
 import android.provider.Settings;
 
 /**
- * 跟网络相关的工具类
- *
- *
  *
  */
 public class NetUtils
@@ -24,7 +21,7 @@ public class NetUtils
     }
 
     /**
-     * 判断网络是否连接
+     *
      *
      * @param context
      * @return
@@ -51,7 +48,7 @@ public class NetUtils
     }
 
     /**
-     * 判断是否是wifi连接
+     *
      */
     public static boolean isWifi(Context context)
     {
@@ -65,7 +62,7 @@ public class NetUtils
     }
 
     /**
-     * 打开网络设置界面
+     *
      */
     public static void openSetting(Activity activity)
     {
