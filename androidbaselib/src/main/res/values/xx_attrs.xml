@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="XXImageView">
+        <attr name="src" format="reference" />
+    </declare-styleable>
+
+    <attr name="borderRadius" format="dimension" />
+    <attr name="type">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" />
+        <attr name="type" />
+    </declare-styleable>
+
+    <attr name="default_checked_index" format="integer"/>
+    <attr name="title_text_size" format="dimension" />
+    <attr name="title_text_color" format="color" />
+    <declare-styleable name="DropDownMenuView">
+        <attr name="default_checked_index" />
+        <attr name="title_text_color" />
+        <attr name="title_text_size" />
+        <attr name="default_arrow_icon" format="reference" />
+        <attr name="selected_arrow_icon" format="reference" />
+        <attr name="menu_color" format="color"/>
+        <attr name="menu_selected_color" format="color"/>
+    </declare-styleable>
+</resources>
