@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="common_fragment_title">
+        <item>WebView</item>
+    </array>
+    <array name="common_fragment_value">
+        <item>com.ldxx.xxalib.activity.WebViewActivity</item>
+    </array>
+    <array name="common_fragment_description">
+        <item>WebView用法</item>
+    </array>
+</resources>
