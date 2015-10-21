@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="common_fragment_title">
+        <item>CardView</item>
         <item>WebView</item>
+        <item>Fonts</item>
     </array>
     <array name="common_fragment_value">
+        <item>com.ldxx.xxalib.activity.CarViewActivity</item>
         <item>com.ldxx.xxalib.activity.WebViewActivity</item>
+        <item>com.ldxx.xxalib.activity.TextFontsActivity</item>
     </array>
     <array name="common_fragment_description">
+        <item>CardView Demo</item>
         <item>WebView用法</item>
+        <item>TextView Fonts 用法</item>
     </array>
 </resources>

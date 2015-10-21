@@ -11,4 +11,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_car_view">CarViewActivity</string>
+    <string name="s_cardview_demo">CardView Demo</string>
+    <string name="title_activity_text_fonts">TextFontsActivity</string>
 </resources>
