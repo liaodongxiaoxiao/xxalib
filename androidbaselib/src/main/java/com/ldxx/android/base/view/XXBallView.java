@@ -8,7 +8,9 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.text.TextPaint;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.ldxx.android.base.R;
@@ -19,15 +21,6 @@ import com.ldxx.android.base.utils.XXDensityUtils;
  * Balls
  */
 public class XXBallView extends View {
-    /**
-     * ball type : red ball
-     */
-    public static final int BALL_TYPE_RED = 1;
-
-    /**
-     * ball type : blue ball
-     */
-    public static final int BALL_TYPE_BLUE = 2;
 
     /**
      * context
@@ -43,11 +36,6 @@ public class XXBallView extends View {
      * ball is selectable
      */
     private boolean isSelectable = true;
-
-    /**
-     * ball type
-     */
-    private int ballType = BALL_TYPE_RED;
 
     /**
      * ball select event listener
@@ -102,16 +90,13 @@ public class XXBallView extends View {
 
         num = a.getString(
                 R.styleable.XXBallView_num);
-        ballColor = a.getColor(
-                R.styleable.XXBallView_ball_color,
-                ballColor);
+        ballColor = a.getColor(R.styleable.XXBallView_ball_color, Color.RED);
+
         // Use getDimensionPixelSize or getDimensionPixelOffset when dealing with
         // values that should fall on pixel boundaries.
-        textSize = (int) a.getDimension(
-                R.styleable.XXBallView_text_size,
+        textSize = (int) a.getDimension(R.styleable.XXBallView_text_size,
                 XXDensityUtils.sp2px(context, 14));
 
-        ballType = a.getInt(R.styleable.XXBallView_ball_type, BALL_TYPE_RED);
         isSelectable = a.getBoolean(R.styleable.XXBallView_selectable, false);
         isSelected = a.getBoolean(R.styleable.XXBallView_checked, false);
 
@@ -123,40 +108,32 @@ public class XXBallView extends View {
         mTextPaint.setAntiAlias(true);
         mTextPaint.setTextSize(textSize);
         mTextPaint.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-        mTextBounds = new Rect();
-        mTextPaint.getTextBounds(num, 0, num.length(), mTextBounds);
-
-        if(ballType==BALL_TYPE_RED){
-            ballColor = Color.RED;
-        }else {
-            ballColor = Color.BLUE;
+        if (!TextUtils.isEmpty(num)) {
+            initTextBound();
         }
+
 
         mBallPaint = new Paint();
         mBallPaint.setColor(ballColor);
         mBallPaint.setAntiAlias(true);
 
 
-
-        if (isSelected) {
-            mTextPaint.setColor(Color.WHITE);
-            mBallPaint.setStyle(Paint.Style.FILL);
-        } else {
-            mBallPaint.setStyle(Paint.Style.STROKE);
-            mBallPaint.setStrokeWidth(4f);
-            mTextPaint.setColor(ballColor);
-        }
-
+        resetColor();
         // Update TextPaint and text measurements from attributes
         //invalidateTextPaintAndMeasurements();
     }
 
+    private void initTextBound() {
+        mTextBounds = new Rect();
+        mTextPaint.getTextBounds(num, 0, num.length(), mTextBounds);
+    }
 
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        radius = Math.min(getMeasuredHeight() - getPaddingBottom() - getPaddingTop(), getMeasuredWidth() - getPaddingLeft() - getPaddingRight()) / 2;
+        radius = Math.min(getMeasuredHeight() - getPaddingBottom() - getPaddingTop() - 4f,
+                getMeasuredWidth() - getPaddingLeft() - getPaddingRight() - 4f) / 2;
         x = getMeasuredWidth() / 2;
         y = getMeasuredHeight() / 2;
     }
@@ -173,18 +150,96 @@ public class XXBallView extends View {
         float fontHeight = fontMetrics.bottom - fontMetrics.top;
         // 计算文字baseline
         float textBaseY = getMeasuredHeight() - (getMeasuredHeight() - fontHeight) / 2 - fontMetrics.bottom;
-        canvas.drawText(num,x-mTextBounds.width()/2, textBaseY, mTextPaint);
-
+        if (!TextUtils.isEmpty(num)) {
+            canvas.drawText(num, x - mTextBounds.width() / 2, textBaseY, mTextPaint);
+        }
     }
 
 
     public void setBallNum(String num) {
-        num = num;
+        this.num = num;
+        initTextBound();
         //invalidateTextPaintAndMeasurements();
+        invalidate();
+    }
+
+    public String getBallNum() {
+        return this.num;
+    }
+
+    public void init(String ballNum,int textSize,int ballColor,boolean checked) {
+        this.num = ballNum;
+        this.textSize = textSize;
+        this.ballColor = ballColor;
+        this.isSelected = checked;
+
+        initTextBound();
+        resetColor();
+        invalidate();
     }
 
 
     public interface BallViewSelectedListener {
-        void OnBallViewSelected(XXBallView ballView, boolean isSelected);
+        void OnBallViewSelected(XXBallView view,boolean isSelected);
+    }
+
+
+    private void resetColor() {
+        if (isSelected) {
+            mTextPaint.setColor(Color.WHITE);
+            mBallPaint.setStyle(Paint.Style.FILL);
+        } else {
+            mBallPaint.setStyle(Paint.Style.STROKE);
+            mBallPaint.setStrokeWidth(4f);
+            mTextPaint.setColor(ballColor);
+        }
+        mBallPaint.setColor(ballColor);
+    }
+
+    public void setBallColor(int ballColor) {
+        this.ballColor = ballColor;
+        resetColor();
+        invalidate();
+    }
+
+    public void setBallTextSize(int textSize) {
+        this.textSize = textSize;
+        invalidate();
+    }
+
+    public void setBallChecked(boolean isSelected) {
+        this.isSelected = isSelected;
+        resetColor();
+        invalidate();
+    }
+
+    public void setIsSelectable(boolean isSelectable) {
+        this.isSelectable = isSelectable;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (isSelectable) {
+                    isSelected = !isSelected;
+                    resetColor();
+                    invalidate();
+                    if (ballViewSelectedListener != null) {
+                        ballViewSelectedListener.OnBallViewSelected(this,isSelected);
+                    }
+                }
+                //invalidate();
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                break;
+        }
+        return super.onTouchEvent(event);
+    }
+
+    public void setBallViewSelectedListener(BallViewSelectedListener ballViewSelectedListener) {
+        this.ballViewSelectedListener = ballViewSelectedListener;
     }
 }

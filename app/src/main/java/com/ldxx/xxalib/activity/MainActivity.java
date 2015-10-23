@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 
 import com.ldxx.xxalib.R;
 import com.ldxx.xxalib.fragment.CommonFragment;
+import com.ldxx.xxalib.fragment.CustomViewFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             openFragment(CommonFragment.newInstance());
         } else if (id == R.id.nav_gallery) {
-
+            openFragment(CustomViewFragment.newInstance());
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

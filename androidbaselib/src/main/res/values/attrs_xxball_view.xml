@@ -1,16 +1,30 @@
 <resources>
     <attr name="text_size" format="dimension" />
+    <attr name="ball_color" format="color" />
+    <attr name="selectable" format="boolean" />
     <declare-styleable name="XXBallView">
-        <attr name="ball_type" format="enum">
+        <!--<attr name="ball_type" format="enum">
             <enum name="red" value="1" />
             <enum name="blue" value="2" />
-        </attr>
+        </attr>-->
 
         <attr name="num" format="string" />
-        <attr name="selectable" format="boolean" />
+        <attr name="selectable" />
         <attr name="checked" format="boolean" />
-        <attr name="ball_color" format="color" />
+        <attr name="ball_color" />
         <attr name="text_size" />
 
+    </declare-styleable>
+
+    <declare-styleable name="XXBallViewLayout">
+        <attr name="selectable" />
+        <attr name="ball_color" />
+        <attr name="text_size" />
+        <attr name="startBallNum" format="integer" />
+        <attr name="endBallNum" format="integer" />
+        <attr name="ballNums" format="string" />
+        <attr name="checktedNums" format="string"/>
+        <attr name="columns" format="integer"/>
+        <attr name="ballDiameter" format="dimension" />
     </declare-styleable>
 </resources>

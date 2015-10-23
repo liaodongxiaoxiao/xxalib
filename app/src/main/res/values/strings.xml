@@ -14,4 +14,6 @@
     <string name="title_activity_car_view">CarViewActivity</string>
     <string name="s_cardview_demo">CardView Demo</string>
     <string name="title_activity_text_fonts">TextFontsActivity</string>
+    <string name="s_custom_view">自定义控件</string>
+    <string name="title_activity_custom_xxball_view">CustomXXBallViewActivity</string>
 </resources>

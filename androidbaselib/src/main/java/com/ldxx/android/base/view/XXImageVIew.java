@@ -25,6 +25,8 @@ public class XXImageVIew extends View {
     private float top;
     private float scale = 1f;
 
+    private  Matrix matrix;
+
     public XXImageVIew(Context context) {
         super(context);
         init(context, null, 0);
@@ -41,7 +43,7 @@ public class XXImageVIew extends View {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-
+        matrix = new Matrix();
         drawablePaint = new Paint();
         TypedArray ta = null;
         try {
@@ -101,7 +103,6 @@ public class XXImageVIew extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(Color.YELLOW);
-        Matrix matrix = new Matrix();
 
         matrix.setTranslate(bitmap.getWidth() / 2 + left, bitmap.getHeight() / 2 + top);
         matrix.setScale(scale, scale);

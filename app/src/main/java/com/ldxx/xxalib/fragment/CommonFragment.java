@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.ldxx.android.base.adapter.XXBaseAdapter;
 import com.ldxx.android.base.bean.XXViewHolder;
 import com.ldxx.xxalib.R;
+import com.ldxx.xxalib.beans.XXItem;
+import com.ldxx.xxalib.utils.LoadDataUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,22 +57,17 @@ public class CommonFragment extends Fragment {
     }
 
     private void init() {
-        String[] titles = getResources().getStringArray(R.array.common_fragment_title);
-        String[] description = getResources().getStringArray(R.array.common_fragment_description);
-        String[] values = getResources().getStringArray(R.array.common_fragment_value);
-        final List<Item> data = new ArrayList<>();
-        for (int i = 0, j = titles.length; i < j; i++) {
-            data.add(new Item(titles[i], description[i], values[i]));
-        }
+        final List<XXItem> data = LoadDataUtils.loadData(getActivity(),R.array.common_fragment_title,
+                R.array.common_fragment_description,R.array.common_fragment_value);
 
         gridView.setAdapter(new ItemAdapter(getActivity(), data, R.layout.fragment_common_item));
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Item item = data.get(position);
+                XXItem item = data.get(position);
                 try {
                     Class c = Class.forName(item.getValue());
-                    getActivity().startActivity(new Intent(getActivity(),c));
+                    getActivity().startActivity(new Intent(getActivity(), c));
                 } catch (ClassNotFoundException e) {
                     Toast.makeText(getActivity(), "没有找到指定的Activity", Toast.LENGTH_SHORT).show();
                 }
@@ -93,57 +90,18 @@ public class CommonFragment extends Fragment {
         return view;
     }
 
-    class ItemAdapter extends XXBaseAdapter<Item> {
-        public ItemAdapter(Context context, List<Item> data, int itemLayoutId) {
+    class ItemAdapter extends XXBaseAdapter<XXItem> {
+        public ItemAdapter(Context context, List<XXItem> data, int itemLayoutId) {
             super(context, data, itemLayoutId);
         }
 
         @Override
-        public void convert(XXViewHolder helper, Item item) {
+        public void convert(XXViewHolder helper, XXItem item) {
             helper.setText(R.id.common_item_title, item.getTitle())
                     .setText(R.id.common_item_description, item.getDescription());
         }
 
 
-    }
-
-    class Item {
-        private String title;
-        private String value;
-        private String description;
-
-        public Item(String title, String description, String value) {
-            this.title = title;
-            this.value = value;
-            this.description = description;
-        }
-
-        public Item() {
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
     }
 
 

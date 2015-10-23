@@ -4,4 +4,6 @@
     <color name="xx_light_gray">#DDDDDD</color>
     <color name="xx_write">#ffffff</color>
     <color name="xx_black">#000000</color>
+    <color name="xx_green">#3d9353</color>
+    <color name="xx_blue">#2d39bf</color>
 </resources>

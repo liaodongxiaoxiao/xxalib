@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- for CommonFragment -->
     <array name="common_fragment_title">
         <item>CardView</item>
         <item>WebView</item>
@@ -15,4 +16,22 @@
         <item>WebView用法</item>
         <item>TextView Fonts 用法</item>
     </array>
+
+    <!-- for CustomViewFragment -->
+    <array name="custom_view_fragment_title">
+        <item>XXBallView</item>
+        <item>WebView</item>
+        <item>Fonts</item>
+    </array>
+    <array name="custom_view_fragment_value">
+        <item>com.ldxx.xxalib.activity.CustomXXBallViewActivity</item>
+        <item>com.ldxx.xxalib.activity.WebViewActivity</item>
+        <item>com.ldxx.xxalib.activity.TextFontsActivity</item>
+    </array>
+    <array name="custom_view_fragment_description">
+        <item>自定义小球控件</item>
+        <item>WebView用法</item>
+        <item>TextView Fonts 用法</item>
+    </array>
+
 </resources>

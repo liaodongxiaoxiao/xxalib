@@ -3,6 +3,7 @@ package com.ldxx.android.base.view;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -12,7 +13,7 @@ import android.widget.TextView;
  */
 public class JsonTextView extends TextView {
     private CharSequence initialValue;
-
+private Button btn;
     private int i = 0;
 
     private StringBuffer sb = new StringBuffer();

@@ -31,6 +31,10 @@
         <activity
             android:name=".activity.TextFontsActivity"
             android:label="@string/title_activity_text_fonts"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CustomXXBallViewActivity"
+            android:label="@string/title_activity_custom_xxball_view"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
