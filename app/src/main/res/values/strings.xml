@@ -16,4 +16,6 @@
     <string name="title_activity_text_fonts">TextFontsActivity</string>
     <string name="s_custom_view">自定义控件</string>
     <string name="title_activity_custom_xxball_view">CustomXXBallViewActivity</string>
+    <string name="title_activity_thrid_fresco">ThridFrescoActivity</string>
+    <string name="s_use_third_lib">第三方库使用</string>
 </resources>

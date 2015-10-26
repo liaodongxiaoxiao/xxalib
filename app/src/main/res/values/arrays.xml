@@ -34,4 +34,13 @@
         <item>TextView Fonts 用法</item>
     </array>
 
+    <array name="third_fragment_title">
+        <item>Fresco</item>
+    </array>
+    <array name="third_fragment_value">
+        <item>com.ldxx.xxalib.activity.ThirdFrescoActivity</item>
+    </array>
+    <array name="third_fragment_description">
+        <item>Fresco 是有Facebook推出的强大开源库</item>
+    </array>
 </resources>

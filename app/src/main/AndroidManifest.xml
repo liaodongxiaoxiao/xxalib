@@ -35,6 +35,10 @@
         <activity
             android:name=".activity.CustomXXBallViewActivity"
             android:label="@string/title_activity_custom_xxball_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ThirdFrescoActivity"
+            android:label="@string/title_activity_thrid_fresco"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
