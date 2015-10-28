@@ -1,5 +1,7 @@
 package com.ldxx.xxalib.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,18 +19,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.ldxx.android.base.utils.XXDBUtils;
 import com.ldxx.xxalib.R;
+import com.ldxx.xxalib.fragment.CaseDemoFragment;
 import com.ldxx.xxalib.fragment.CommonFragment;
 import com.ldxx.xxalib.fragment.CustomViewFragment;
 import com.ldxx.xxalib.fragment.ThirdLibFragment;
+import com.ldxx.xxalib.service.LoadDataIntentService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    //private final String mImgUrl = "http://www.eoeandroid.com/uc_server/avatar.php?uid=817036&size=middle";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        //Fresco.initialize(this);
+
         setContentView(R.layout.activity_mains);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,9 +61,16 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        /*
+        SimpleDraweeView simpleDraweeView = (SimpleDraweeView) navigationView.findViewById(R.id.s_m);
+        Uri uri = Uri.parse(mImgUrl);
+        simpleDraweeView.setImageURI(uri);*/
 
         openFragment(CommonFragment.newInstance());
+
+        startService(new Intent(this, LoadDataIntentService.class));
+        //for debug
+        XXDBUtils.copyDBtoSDcard(this);
     }
 
     @Override
@@ -100,7 +118,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
             openFragment(ThirdLibFragment.newInstance());
         } else if (id == R.id.nav_manage) {
-
+            openFragment(CaseDemoFragment.newInstance());
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

@@ -3,6 +3,7 @@
     package="com.ldxx.xxalib">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -39,7 +40,28 @@
         <activity
             android:name=".activity.ThirdFrescoActivity"
             android:label="@string/title_activity_thrid_fresco"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CommonCollapsingToolbarLayoutActivity"
+            android:label="@string/title_activity_common_collapsing_toolbar_layout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CommonTabLayoutActivity"
+            android:label="@string/title_activity_common_tab_layout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CaseHomeImageShowActivity"
+            android:label="@string/title_activity_case_home_image_show"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <service
+            android:name=".service.LoadDataIntentService"
+            android:exported="false" />
+
+        <provider
+            android:name=".contentprovider.NewsContentProvider"
+            android:authorities="${applicationId}.news.contentprovider"
+            android:exported="false" />
     </application>
 
 </manifest>

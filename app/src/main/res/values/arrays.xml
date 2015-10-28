@@ -2,16 +2,22 @@
 <resources>
     <!-- for CommonFragment -->
     <array name="common_fragment_title">
+        <item>CollapsingTL</item>
+        <item>TabLayout</item>
         <item>CardView</item>
         <item>WebView</item>
         <item>Fonts</item>
     </array>
     <array name="common_fragment_value">
+        <item>com.ldxx.xxalib.activity.CommonCollapsingToolbarLayoutActivity</item>
+        <item>com.ldxx.xxalib.activity.CommonTabLayoutActivity</item>
         <item>com.ldxx.xxalib.activity.CarViewActivity</item>
         <item>com.ldxx.xxalib.activity.WebViewActivity</item>
         <item>com.ldxx.xxalib.activity.TextFontsActivity</item>
     </array>
     <array name="common_fragment_description">
+        <item>CollapsingToolbarLayout是design包中的</item>
+        <item>TabLayout+ViewPager</item>
         <item>CardView Demo</item>
         <item>WebView用法</item>
         <item>TextView Fonts 用法</item>
@@ -42,5 +48,15 @@
     </array>
     <array name="third_fragment_description">
         <item>Fresco 是有Facebook推出的强大开源库</item>
+    </array>
+
+    <array name="case_fragment_title">
+        <item>滚动播放新闻</item>
+    </array>
+    <array name="case_fragment_value">
+        <item>com.ldxx.xxalib.activity.CaseHomeImageShowActivity</item>
+    </array>
+    <array name="case_fragment_description">
+        <item>ViewPager展示新闻图片，Loader绑定数据库</item>
     </array>
 </resources>

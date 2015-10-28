@@ -27,7 +27,7 @@ public class XXFileUtils {
             return null;
         }
         //
-        String sdFile = XXSDCardUtils.getSDCardPath() + dir;
+        String sdFile = XXSDCardUtils.getSDCardPath()+"/" + dir;
         File file = new File(sdFile);
         //
         if (!file.isDirectory()) {

@@ -18,4 +18,10 @@
     <string name="title_activity_custom_xxball_view">CustomXXBallViewActivity</string>
     <string name="title_activity_thrid_fresco">ThridFrescoActivity</string>
     <string name="s_use_third_lib">第三方库使用</string>
+    <string name="title_activity_common_collapsing_toolbar_layout">
+        CollapsingToolbarLayout
+    </string>
+    <string name="title_activity_common_tab_layout">CommonTabLayoutActivity</string>
+    <string name="s_case_demo">经典案例</string>
+    <string name="title_activity_case_home_image_show">首页</string>
 </resources>
