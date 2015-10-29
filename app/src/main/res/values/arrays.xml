@@ -5,6 +5,7 @@
         <item>CollapsingTL</item>
         <item>TabLayout</item>
         <item>CardView</item>
+        <item>RecyclerView</item>
         <item>WebView</item>
         <item>Fonts</item>
     </array>
@@ -12,6 +13,7 @@
         <item>com.ldxx.xxalib.activity.CommonCollapsingToolbarLayoutActivity</item>
         <item>com.ldxx.xxalib.activity.CommonTabLayoutActivity</item>
         <item>com.ldxx.xxalib.activity.CarViewActivity</item>
+        <item>com.ldxx.xxalib.activity.CommonRecyclerViewActivity</item>
         <item>com.ldxx.xxalib.activity.WebViewActivity</item>
         <item>com.ldxx.xxalib.activity.TextFontsActivity</item>
     </array>
@@ -19,6 +21,7 @@
         <item>CollapsingToolbarLayout是design包中的</item>
         <item>TabLayout+ViewPager</item>
         <item>CardView Demo</item>
+        <item>RecyclerView用法</item>
         <item>WebView用法</item>
         <item>TextView Fonts 用法</item>
     </array>

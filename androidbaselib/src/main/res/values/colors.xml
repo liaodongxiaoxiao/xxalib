@@ -7,4 +7,7 @@
     <color name="xx_black">#000000</color>
     <color name="xx_green">#3d9353</color>
     <color name="xx_blue">#2d39bf</color>
+    <color name="btn_color1">#ffff800a</color>
+    <color name="btn_color3">#ffff478f</color>
+    <color name="btn_color2">#ffb83b5a</color>
 </resources>
