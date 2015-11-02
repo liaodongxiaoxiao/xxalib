@@ -25,4 +25,6 @@
     <string name="s_case_demo">经典案例</string>
     <string name="title_activity_case_home_image_show">首页</string>
     <string name="title_activity_common_recycler_view">CommonRecyclerViewActivity</string>
+    <string name="title_activity_case_http">CaseHttpActivity</string>
+    <string name="s_city_shenyang">沈阳市</string>
 </resources>

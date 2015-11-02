@@ -24,4 +24,15 @@ public class DateUtils {
         DateFormat format2 = new SimpleDateFormat(pattern, Locale.getDefault());
         return format2.format(date);
     }
+
+    public static String getCurrentDate() {
+
+        return getCurrentDate(PATTERN3);
+    }
+
+    public static String getCurrentDate(String pattern) {
+        Calendar c = Calendar.getInstance();
+        return dateToStr(c.getTime(), pattern);
+    }
+
 }

@@ -19,13 +19,18 @@ android {
     }
 }
 
+ext {
+    archivesBaseName = "ldxx-${android.defaultConfig.versionName}"
+    supportLibVersion = '23.1.0'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:design:23.1.0'
+    compile "com.android.support:design:${supportLibVersion}"
+    compile "com.android.support:cardview-v7:${supportLibVersion}"
     compile project(':androidbaselib')
-    compile 'com.android.support:cardview-v7:23.1.0'
     compile 'com.facebook.fresco:fresco:0.8.0+'
-    compile files('libs/jsoup-1.8.2.jar')
+    compile 'org.jsoup:jsoup:1.8.3'
     compile files('libs/xUtils-2.6.14.jar')
 }
