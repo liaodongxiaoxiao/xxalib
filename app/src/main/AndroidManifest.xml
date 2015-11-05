@@ -62,6 +62,10 @@
             android:name=".contentprovider.NewsContentProvider"
             android:authorities="${applicationId}.news.contentprovider"
             android:exported="false"/>
+        <provider
+            android:name=".contentprovider.DateDataContentProvider"
+            android:authorities="${applicationId}.contentprovider.DateDataContentProvider"
+            android:exported="false"/>
 
         <activity
             android:name=".activity.CommonRecyclerViewActivity"
@@ -70,6 +74,11 @@
         <activity
             android:name=".activity.CaseHttpActivity"
             android:label="@string/title_activity_case_http"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activity.CaseDataChangeActivity"
+            android:label="@string/title_activity_case_data_change"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

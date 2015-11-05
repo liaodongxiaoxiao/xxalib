@@ -1,9 +1,11 @@
 package com.ldxx.xxalib.contentprovider;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -13,49 +15,35 @@ import android.support.annotation.Nullable;
 import com.ldxx.xxalib.BuildConfig;
 
 /**
- * Created by LDXX on 2015/10/27.
+ * Created by LDXX on 2015/11/4.
  * company Ltd
  * liaodongxiaoxiao@gmail.com
- * 1. create a class extends android.content.ContentProvider
- * 2. define a CONTENT_URI (public static final)
- * 3. define in AndroidManifest.xml
  */
-public class NewsContentProvider extends ContentProvider {
-
-    private static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".news.contentprovider";
-
+public class DateDataContentProvider extends ContentProvider {
+    private static final String AUTHORITY = BuildConfig.APPLICATION_ID + ".contentprovider.DateDataContentProvider";
     private static final String BASE_PATH = "todos";
-
-    public static String[] ALL_PROJECTION =new String[]{"pid","image_src","title","url","create_time"};
-
-    public static String COLUMN_CREATE_TIME="create_time";
-    public static String COLUMN_IMAGE_SRC="image_src";
-    public static String COLUMN_TITLE="title";
-    public static String COLUMN_PID="pid";
-    public static String COLUMN_URL="url";
-    /**
-     * Content URI for favorite destinations.
-     */
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
 
-    public static final String DATABASE_NAME = "news.db";
-    private static final int DATABASE_VERSION = 1;
-    public static final String TABLE_NAME = "XXNewsInfo";
-    private final String TAG = this.getClass().getSimpleName();
-    private DatabaseHelper helper;
+    public static final String DATABASE_NAME = "data.db";
+    public static final int DATABASE_VERSION = 1;
+    public static final String TABLE_NAME = "xx_data";
+    public static final String COLUMN_ID = "d_id";
+    public static final String COLUMN_DATA = "d_data";
+
+    private DataSQLDBHelper dbHelper;
+
 
     @Override
     public boolean onCreate() {
-        helper = new DatabaseHelper(getContext());
-
-        return helper != null;
+        dbHelper = new DataSQLDBHelper(getContext());
+        return dbHelper != null;
     }
 
     @Nullable
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        SQLiteDatabase db = helper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
         qb.setTables(TABLE_NAME);
         Cursor c = qb.query(db, projection, selection, null, null, null, sortOrder);
         c.setNotificationUri(getContext().getContentResolver(), uri);
@@ -71,12 +59,23 @@ public class NewsContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        return null;
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        long rowId = db.insert(TABLE_NAME, "", values);
+        if (rowId > 0) {
+            Uri rowUri = ContentUris.appendId(CONTENT_URI.buildUpon(), rowId).build();
+            getContext().getContentResolver().notifyChange(rowUri, null);
+            return rowUri;
+        }
+        throw new SQLException("Failed to insert row into " + uri);
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        return 0;
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int i = db.delete(TABLE_NAME, selection, selectionArgs);
+        getContext().getContentResolver().notifyChange(uri, null);
+        db.close();
+        return i;
     }
 
     @Override
@@ -84,17 +83,22 @@ public class NewsContentProvider extends ContentProvider {
         return 0;
     }
 
-    private static class DatabaseHelper extends SQLiteOpenHelper {
-        DatabaseHelper(Context context) {
+    private static class DataSQLDBHelper extends SQLiteOpenHelper {
+
+        public DataSQLDBHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            //创建用于存储数据的表
-            db.execSQL("Create table " + TABLE_NAME + "( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    " pid TEXT, image_src TEXT,title TEXT,url TEXT,create_time)");
+            StringBuilder sb = new StringBuilder();
+            sb.append(" create table ").append(TABLE_NAME)
+                    .append(" ( ").append(COLUMN_ID)
+                    .append(" TEXT , ").append(COLUMN_DATA)
+                    .append(" TEXT )");
+            db.execSQL(sb.toString());
         }
+
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

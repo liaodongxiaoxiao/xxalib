@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.ldxx.xxalib.activity.CaseDataChangeActivity"
+    tools:showIn="@layout/activity_case_data_change">
+
+    <Button
+        android:id="@+id/add_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="addData"
+        android:text="@string/s_btn_add"
+        />
+
+    <Button
+        android:id="@+id/del_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:onClick="delData"
+        android:text="@string/s_btn_del"/>
+
+    <android.support.v7.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_data">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xx_blue"
+                android:padding="10dp"
+                android:text="使用ContentObserver"
+                android:textColor="@color/xx_write"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/observer_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card"
+        android:background="@color/xx_blue"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:text="使用Loader"
+        android:textColor="@color/xx_write"
+        android:textStyle="bold"/>
+
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/list_title"
+        />
+</RelativeLayout>

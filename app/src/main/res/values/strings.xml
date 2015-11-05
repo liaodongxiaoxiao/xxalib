@@ -27,4 +27,7 @@
     <string name="title_activity_common_recycler_view">CommonRecyclerViewActivity</string>
     <string name="title_activity_case_http">CaseHttpActivity</string>
     <string name="s_city_shenyang">沈阳市</string>
+    <string name="title_activity_case_data_change">CaseDataChangeActivity</string>
+    <string name="s_btn_add">添加一条数据</string>
+    <string name="s_btn_del">删除一条数据</string>
 </resources>

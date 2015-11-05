@@ -56,13 +56,16 @@
     <array name="case_fragment_title">
         <item>滚动播放新闻</item>
         <item>获取沈阳天气</item>
+        <item>监听数据变化案例</item>
     </array>
     <array name="case_fragment_value">
         <item>com.ldxx.xxalib.activity.CaseHomeImageShowActivity</item>
         <item>com.ldxx.xxalib.activity.CaseHttpActivity</item>
+        <item>com.ldxx.xxalib.activity.CaseDataChangeActivity</item>
     </array>
     <array name="case_fragment_description">
         <item>ViewPager展示新闻图片，Loader绑定数据库</item>
         <item>使用Volley和OKHttp，HelloChart</item>
+        <item>通过ContentObserver和Loader两种方式实现</item>
     </array>
 </resources>
