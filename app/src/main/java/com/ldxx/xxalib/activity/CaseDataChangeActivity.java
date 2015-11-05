@@ -8,7 +8,6 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.ContentObserver;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,7 +15,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,23 +22,24 @@ import android.widget.TextView;
 import com.ldxx.android.base.adapter.XXBaseAdapter;
 import com.ldxx.android.base.bean.XXViewHolder;
 import com.ldxx.android.base.utils.CommonUtils;
-import com.ldxx.android.base.utils.XXAppUtils;
 import com.ldxx.utils.DateUtils;
 import com.ldxx.xxalib.R;
 import com.ldxx.xxalib.beans.XXDateData;
 import com.ldxx.xxalib.contentprovider.DateDataContentProvider;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CaseDataChangeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private final String TAG = this.getClass().getSimpleName();
+    //private final String TAG = this.getClass().getSimpleName();
     private TextView textView;
     private XXDateData mData;
     private List<XXDateData> datas = new ArrayList<>();
     private ListView mListView;
     private DataAdapter mAdapter;
+    private final UpdateHandler mHandler = new UpdateHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +65,7 @@ public class CaseDataChangeActivity extends AppCompatActivity implements LoaderM
         initData();
 
         ContentResolver resolver = getContentResolver();
-        resolver.registerContentObserver(DateDataContentProvider.CONTENT_URI, true, new DataContentObserver(handler));
+        resolver.registerContentObserver(DateDataContentProvider.CONTENT_URI, true, new DataContentObserver(mHandler));
 
     }
 
@@ -92,25 +91,33 @@ public class CaseDataChangeActivity extends AppCompatActivity implements LoaderM
             bundle.putParcelable("data", m.get(0));
             Message msg = new Message();
             msg.setData(bundle);
-            handler.sendMessage(msg);
+            mHandler.sendMessage(msg);
         }
     }
 
-    Handler handler = new Handler() {
+    private static class UpdateHandler extends Handler {
+        private final WeakReference<CaseDataChangeActivity> mActivity;
+
+        public UpdateHandler(CaseDataChangeActivity activity) {
+            mActivity = new WeakReference<CaseDataChangeActivity>(activity);
+        }
+
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
             Bundle b = msg.getData();
+            CaseDataChangeActivity activity = mActivity.get();
             if (b != null && b.containsKey("data")) {
-                mData = b.getParcelable("data");
-                textView.setText("共" + b.getInt("count") + "条记录：\n 最新的为：" + mData.toString());
+                activity.mData = b.getParcelable("data");
+                activity.textView.setText("共" + b.getInt("count") + "条记录：\n 最新的为：" + activity.mData.toString());
 
             } else {
-                textView.setText("无任何记录");
+                activity.textView.setText("无任何记录");
             }
         }
-    };
+    }
+
 
     public void addData(View view) {
         ContentResolver resolver = getContentResolver();
@@ -157,16 +164,16 @@ public class CaseDataChangeActivity extends AppCompatActivity implements LoaderM
 
     class DataContentObserver extends ContentObserver {
 
-        private Handler handler;
+        private Handler mHandler;
 
         /**
          * Creates a content observer.
          *
-         * @param handler The handler to run {@link #onChange} on, or null if none.
+         * @param mHandler The mHandler to run {@link #onChange} on, or null if none.
          */
-        public DataContentObserver(Handler handler) {
-            super(handler);
-            this.handler = handler;
+        public DataContentObserver(Handler mHandler) {
+            super(mHandler);
+            this.mHandler = mHandler;
         }
 
         @Override
@@ -184,9 +191,9 @@ public class CaseDataChangeActivity extends AppCompatActivity implements LoaderM
                 bundle.putString(DateDataContentProvider.COLUMN_ID, id);
                 Message msg = new Message();
                 msg.setData(bundle);
-                handler.sendMessage(msg);
+                mHandler.sendMessage(msg);
             } else {
-                handler.sendEmptyMessage(1);
+                mHandler.sendEmptyMessage(1);
             }
         }
 
