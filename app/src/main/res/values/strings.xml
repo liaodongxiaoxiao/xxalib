@@ -30,4 +30,5 @@
     <string name="title_activity_case_data_change">CaseDataChangeActivity</string>
     <string name="s_btn_add">添加一条数据</string>
     <string name="s_btn_del">删除一条数据</string>
+    <string name="title_activity_case_xml">CaseXMLActivity</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.ldxx.xxalib.activity;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.LoaderManager;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import com.ldxx.android.base.adapter.XXBaseAdapter;
 import com.ldxx.android.base.bean.XXViewHolder;
 import com.ldxx.android.base.utils.CommonUtils;
+import com.ldxx.android.base.utils.XXScreenUtils;
 import com.ldxx.utils.DateUtils;
 import com.ldxx.xxalib.R;
 import com.ldxx.xxalib.beans.XXDateData;
@@ -52,8 +55,9 @@ public class CaseDataChangeActivity extends AppCompatActivity implements LoaderM
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("x", XXScreenUtils.getScreenWidth(CaseDataChangeActivity.this)/2);
+                PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("y", XXScreenUtils.getScreenHeight(CaseDataChangeActivity.this)/2);
+                ObjectAnimator.ofPropertyValuesHolder(view, pvhX, pvhY).start();
             }
         });
         textView = (TextView) findViewById(R.id.observer_text);

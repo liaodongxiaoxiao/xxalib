@@ -81,6 +81,11 @@
             android:label="@string/title_activity_case_data_change"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".activity.CaseXMLActivity"
+            android:label="@string/title_activity_case_xml"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
