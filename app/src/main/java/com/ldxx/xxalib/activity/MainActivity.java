@@ -32,8 +32,7 @@ import com.ldxx.xxalib.service.LoadDataIntentService;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //private final String mImgUrl = "http://www.eoeandroid.com/uc_server/avatar.php?uid=817036&size=middle";
-
+    private static final String TAG = "[MainActivity]";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -99,6 +98,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this,SettingsActivity.class));
             return true;
         }
 
