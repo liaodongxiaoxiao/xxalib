@@ -32,7 +32,6 @@ public class CaseHomeImageShowActivity extends AppCompatActivity
     private SimpleDraweeView[] mImages = new SimpleDraweeView[5];
     private List<XXNewsInfo> mDatas = new ArrayList<>();
     private NewsViewPagerAdapter mAdapter;
-    private CirclePageIndicator indicator;
     private TextView mTitle;
 
     private final String TAG = this.getClass().getSimpleName();
@@ -61,7 +60,7 @@ public class CaseHomeImageShowActivity extends AppCompatActivity
         mAdapter = new NewsViewPagerAdapter();
         mViewPager.setAdapter(mAdapter);
         mViewPager.addOnPageChangeListener(new ViewPagerChangeListener());
-        indicator = (CirclePageIndicator) findViewById(R.id.indicator);
+        CirclePageIndicator indicator = (CirclePageIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(mViewPager);
         getSupportLoaderManager().initLoader(0, null, this);
         initImageViews();

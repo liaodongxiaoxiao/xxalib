@@ -1,3 +1,4 @@
+/*
 package com.ldxx.android.base.common;
 
 import android.graphics.Bitmap;
@@ -5,9 +6,11 @@ import android.support.v4.util.LruCache;
 
 import com.android.volley.toolbox.ImageLoader;
 
+*/
 /**
  * Created by WANGZHUO on 2015/4/17.
- */
+ *//*
+
 public class BitmapCache extends LruCache<String, Bitmap> implements ImageLoader.ImageCache {
 
     public BitmapCache() {
@@ -41,3 +44,4 @@ public class BitmapCache extends LruCache<String, Bitmap> implements ImageLoader
     }
 
 }
+*/

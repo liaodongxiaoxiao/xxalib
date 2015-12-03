@@ -12,15 +12,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
-import com.ldxx.android.base.net.JsonObjectRequest;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.ldxx.android.base.net.OKHttpBaseUtils;
 import com.ldxx.utils.DateUtils;
 import com.ldxx.xxalib.R;
 import com.ldxx.xxalib.beans.XXWInfo;
@@ -29,8 +26,13 @@ import com.ldxx.xxalib.utils.WeatherUtils;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
+import com.squareup.okhttp.Headers;
+import com.squareup.okhttp.MultipartBuilder;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.ResponseBody;
 
-import java.util.Calendar;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,8 +40,7 @@ import java.util.Map;
 public class CaseHttpActivity extends AppCompatActivity {
     public static final String DATABASE_NAME = "xxweather.db";
     private final String TAG = this.getClass().getSimpleName();
-    private final String URL = "http://apis.baidu" +
-            ".com/apistore/weatherservice/recentweathers?cityname=沈阳&cityid=101070101";
+    private final String URL = "http://apis.baidu.com/apistore/weatherservice/recentweathers";
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private TextView mEmptyInfo;
     //private JsonTextView mJsonTextView;
@@ -54,14 +55,11 @@ public class CaseHttpActivity extends AppCompatActivity {
     private TextView mCity;
     //
     private DbUtils db;
-    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_case_http);
-        //init request queue
-        requestQueue = Volley.newRequestQueue(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -156,81 +154,27 @@ public class CaseHttpActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                    URL, null,
-                    new Response.Listener<JSONObject>() {
 
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Log.e(TAG, response.toString());
-                            if (response != null && response.containsKey("errMsg") && "success".equals(response
-                                    .getString("errMsg"))) {
-                                try {
-                                    String jb = response.getString("retData");
-                                    JSONObject json = JSON.parseObject(jb);
-                                    //
-                                    XXWeather today = JSON.parseObject(json.getString("today"), XXWeather.class);
-                                    List<XXWInfo> infos = JSON.parseArray(JSON.parseObject(json.getString("today"))
-                                            .getString("index"), XXWInfo.class);
-                                    today.setSavedate(DateUtils.getCurrentTimeStr());
-                                    db.saveOrUpdate(today);
+            Map<String, String> bodys = new HashMap<>();
+            //bodys.put("cityname", "沈阳");
+            bodys.put("cityid", "101070101");
 
-                                    db.delete(XXWInfo.class, WhereBuilder.b("date", "=", today.getDate()));
-                                    for (XXWInfo info : infos) {
-                                        info.setDate(today.getDate());
-                                        db.save(info);
-                                    }
+            Map<String, String> headers = new HashMap<>();
+            headers.put("apiKey", "d6e91c2b841ef37858964106aa83749c");
 
-                                    List<XXWeather> historys = JSON.parseArray(json.getString("history"), XXWeather
-                                            .class);
-                                    for (XXWeather weather : historys) {
-                                        weather.setSavedate(DateUtils.getCurrentTimeStr());
-                                        db.saveOrUpdate(weather);
-                                    }
-                                    //db.saveOrUpdateAll(historys);
+            try {
+                ResponseBody body = OKHttpBaseUtils.postBase(URL, headers, bodys);
+                //Gson gson = new Gson();
+                JsonParser parser = new JsonParser();
+                JsonElement tradeElement = parser.parse(body.charStream());
+                //Log.e(TAG, "doInBackground: "+tradeElement );
+                //JsonArray trade = tradeElement.getAsJsonArray();
+                //Log.e(TAG, "doInBackground: "+trade );
+            } catch (IOException e) {
+                Log.e(TAG, "Error: " + e.getMessage());
+                //mEmptyInfo.setVisibility(View.VISIBLE);
+            }
 
-                                    List<XXWeather> forecasts = JSON.parseArray(json.getString("forecast"), XXWeather
-                                            .class);
-                                    for (XXWeather weather : forecasts) {
-                                        weather.setSavedate(DateUtils.getCurrentTimeStr());
-                                        db.saveOrUpdate(weather);
-                                    }
-
-                                } catch (Exception e) {
-                                    Log.e(TAG, "获取天气信息持久化时出错", e);
-                                }
-
-                            }
-
-                            mEmptyInfo.setVisibility(View.GONE);
-                            //mJsonTextView.setVisibility(View.VISIBLE);
-
-                        }
-                    }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e(TAG, "Error: " + error.getMessage());
-                    mEmptyInfo.setVisibility(View.VISIBLE);
-                    //mJsonTextView.setVisibility(View.GONE);
-                }
-            }) {
-
-                /**
-                 * Passing some request headers
-                 * */
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String, String> headers = new HashMap<>();
-                    headers.put("apiKey", "d6e91c2b841ef37858964106aa83749c");
-                    return headers;
-                }
-
-
-            };
-
-            // Adding request to request queue
-            requestQueue.add(jsonObjReq);
             return null;
         }
 

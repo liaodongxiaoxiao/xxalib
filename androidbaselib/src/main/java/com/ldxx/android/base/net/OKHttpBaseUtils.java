@@ -5,9 +5,10 @@ import android.text.TextUtils;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
 
@@ -21,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  * company Ltd
  * liaodongxiaoxiao@gmail.com
  */
-class OKHttpBaseUtils {
+public class OKHttpBaseUtils {
     static final OkHttpClient client = new OkHttpClient();
 
     static {
@@ -62,14 +63,7 @@ class OKHttpBaseUtils {
         if (!TextUtils.isEmpty(key) && value != null) {
             formBody.add(key, value);
         }
-
-        Request request = new Request.Builder()
-                .url(url)
-                .post(formBody.build())
-                .build();
-        Response response = client.newCall(request).execute();
-        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-        return response.body();
+        return postBase(url, null, formBody.build());
     }
 
     public static ResponseBody postBase(String url, Map<String, Object> map) throws IOException {
@@ -82,13 +76,44 @@ class OKHttpBaseUtils {
                 formBody.add(key, String.valueOf(map.get(key)));
             }
         }
+        return postBase(url, null, formBody.build());
+    }
 
-        Request request = new Request.Builder()
-                .url(url)
-                .post(formBody.build())
-                .build();
-        Response response = client.newCall(request).execute();
+    private static ResponseBody postBase(String url, Headers headers, RequestBody body) throws IOException {
+        Request.Builder builder = new Request.Builder();
+        builder.url(url);
+        if (headers != null && headers.size() > 0) {
+            builder.headers(headers);
+        }
+        if (body != null) {
+            builder.post(body);
+        }
+        Response response = client.newCall(builder.build()).execute();
         if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
         return response.body();
     }
+
+    public static ResponseBody postBase(String url, Map<String, String> headers, Map<String, String> body) throws IOException {
+        FormEncodingBuilder formBody = new FormEncodingBuilder();
+        if (body != null && body.size() > 0) {
+            Iterator<String> iterator = body.keySet().iterator();
+            String key;
+            while (iterator.hasNext()) {
+                key = iterator.next();
+                formBody.addEncoded(key, String.valueOf(body.get(key)));
+            }
+        }
+        Headers.Builder builder = new Headers.Builder();
+        if (headers != null && headers.size() > 0) {
+            Iterator<String> iterator = headers.keySet().iterator();
+            String key;
+            while (iterator.hasNext()) {
+                key = iterator.next();
+                builder.add(key, String.valueOf(headers.get(key)));
+            }
+        }
+        return postBase(url, builder.build(), formBody.build());
+    }
+
+
 }
