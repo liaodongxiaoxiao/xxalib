@@ -6,6 +6,7 @@ import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LDXX on 2015/12/3.
@@ -45,4 +46,16 @@ public final class OKHttpPostUtils<T> {
         return listWithPost(url, null, null);
     }
 
+    public T objectWithPost(String url, Map<String, Object> values) throws IOException {
+        Gson gson = new Gson();
+        ResponseBody body = OKHttpBaseUtils.postBase(url, values);
+        return gson.fromJson(body.charStream(), this.tClass);
+    }
+
+    public List<T> listWithPost(String url, Map<String, Object> values) throws IOException {
+        Gson gson = new Gson();
+        ResponseBody body = OKHttpBaseUtils.postBase(url, values);
+        return gson.fromJson(body.charStream(), new TypeToken<List<T>>() {
+        }.getType());
+    }
 }

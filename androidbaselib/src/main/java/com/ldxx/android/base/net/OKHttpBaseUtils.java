@@ -8,11 +8,12 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -71,4 +72,23 @@ class OKHttpBaseUtils {
         return response.body();
     }
 
+    public static ResponseBody postBase(String url, Map<String, Object> map) throws IOException {
+        FormEncodingBuilder formBody = new FormEncodingBuilder();
+        if (map != null && map.size() > 0) {
+            Iterator<String> iterator = map.keySet().iterator();
+            String key;
+            while (iterator.hasNext()) {
+                key = iterator.next();
+                formBody.add(key, String.valueOf(map.get(key)));
+            }
+        }
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(formBody.build())
+                .build();
+        Response response = client.newCall(request).execute();
+        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        return response.body();
+    }
 }
