@@ -28,8 +28,8 @@ class OKHttpBaseUtils {
         client.setConnectTimeout(30, TimeUnit.SECONDS);
     }
 
-    public static final MediaType JSON_TYPE
-            = MediaType.parse("application/json; charset=utf-8");
+    /*public static final MediaType JSON_TYPE
+            = MediaType.parse("application/json; charset=utf-8");*/
 
     public static String get(String url) throws IOException {
         Request request = new Request.Builder()
