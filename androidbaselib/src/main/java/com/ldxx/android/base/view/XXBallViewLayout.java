@@ -15,9 +15,7 @@ import com.ldxx.utils.StringUtils;
 import com.ldxx.utils.XXUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by LDXX on 2015/10/22.
@@ -27,7 +25,7 @@ import java.util.Map;
 public class XXBallViewLayout extends GridLayout {
     private String TAG = this.getClass().getSimpleName();
     private List<String> selectedBalls = new ArrayList<>();
-    private Map<String, XXBallView> ballViews = new HashMap<>();
+    //private Map<String, XXBallView> ballViews = new HashMap<>();
     private SparseArray<String> ballKey = new SparseArray<>();
 
     private boolean isSelectable = false;
@@ -38,8 +36,6 @@ public class XXBallViewLayout extends GridLayout {
     private String ballNums = "";
     private String checkedNums = "";
     private int ballDiameter;
-
-    private int columns = 1;
 
     private Context context;
 
@@ -77,7 +73,7 @@ public class XXBallViewLayout extends GridLayout {
             endBallNum = a.getInt(R.styleable.XXBallViewLayout_endBallNum, endBallNum);
             ballNums = a.getString(R.styleable.XXBallViewLayout_ballNums);
             checkedNums = a.getString(R.styleable.XXBallViewLayout_checktedNums);
-            columns = a.getInt(R.styleable.XXBallViewLayout_columns, 6);
+            int columns = a.getInt(R.styleable.XXBallViewLayout_columns, 6);
             this.setColumnCount(columns);
         } finally {
             a.recycle();
@@ -102,6 +98,13 @@ public class XXBallViewLayout extends GridLayout {
 
     }
 
+    public void setBalls(String ball){
+        if(TextUtils.isEmpty(ball)){
+            return;
+        }
+        this.ballNums = ball;
+        initViewByBalls();
+    }
 
     private void initViewByRang() {
         for (int i = startBallNum; i <= endBallNum; i++) {
@@ -133,7 +136,7 @@ public class XXBallViewLayout extends GridLayout {
             });
         }
 
-        ballViews.put(ballNum, ballView);
+        //ballViews.put(ballNum, ballView);
         ballView.setIsSelectable(isSelectable);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ballDiameter, ballDiameter);
@@ -145,10 +148,7 @@ public class XXBallViewLayout extends GridLayout {
     }
 
     private boolean isChecked(String ballNum) {
-        if (TextUtils.isEmpty(ballNums) || TextUtils.isEmpty(checkedNums)) {
-            return false;
-        }
-        return checkedNums.contains(ballNum);
+        return !(TextUtils.isEmpty(ballNums) || TextUtils.isEmpty(checkedNums)) && checkedNums.contains(ballNum);
     }
 
     public String getSelectedBalls() {
