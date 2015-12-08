@@ -24,6 +24,7 @@
         <attr name="endBallNum" format="integer" />
         <attr name="ballNums" format="string" />
         <attr name="checktedNums" format="string"/>
+        <attr name="checkAll" format="boolean"/>
         <attr name="columns" format="integer"/>
         <attr name="ballDiameter" format="dimension" />
     </declare-styleable>

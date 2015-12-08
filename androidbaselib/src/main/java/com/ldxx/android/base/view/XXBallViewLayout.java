@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.support.v7.widget.GridLayout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
+import android.view.Gravity;
 import android.widget.LinearLayout;
 
 import com.ldxx.android.base.R;
@@ -36,6 +38,9 @@ public class XXBallViewLayout extends GridLayout {
     private String ballNums = "";
     private String checkedNums = "";
     private int ballDiameter;
+    private int columns;
+
+    private boolean chackAll = false;
 
     private Context context;
 
@@ -73,7 +78,8 @@ public class XXBallViewLayout extends GridLayout {
             endBallNum = a.getInt(R.styleable.XXBallViewLayout_endBallNum, endBallNum);
             ballNums = a.getString(R.styleable.XXBallViewLayout_ballNums);
             checkedNums = a.getString(R.styleable.XXBallViewLayout_checktedNums);
-            int columns = a.getInt(R.styleable.XXBallViewLayout_columns, 6);
+            columns = a.getInt(R.styleable.XXBallViewLayout_columns, 6);
+            chackAll = a.getBoolean(R.styleable.XXBallViewLayout_checkAll, false);
             this.setColumnCount(columns);
         } finally {
             a.recycle();
@@ -87,7 +93,23 @@ public class XXBallViewLayout extends GridLayout {
             //fillView();
         }
 
+        //this.setAlignmentMode(GridLayout.CENTER);
+        LayoutParams params = new LayoutParams();
+        params.width = LayoutParams.MATCH_PARENT;
+        params.height = LayoutParams.WRAP_CONTENT;
 
+        params.setGravity(Gravity.CENTER);
+        this.setLayoutParams(params);
+    }
+
+    private int padding;
+
+    @Override
+    protected void onMeasure(int widthSpec, int heightSpec) {
+        super.onMeasure(widthSpec, heightSpec);
+        int width = getWidth() - getPaddingLeft() - getPaddingRight();
+        padding = (width - columns * ballDiameter) / (columns - 1);
+        Log.e(TAG, "onMeasure: " + padding);
     }
 
     private void initViewByBalls() {
@@ -95,11 +117,10 @@ public class XXBallViewLayout extends GridLayout {
         for (String num : balls) {
             initBallView(num);
         }
-
     }
 
-    public void setBalls(String ball){
-        if(TextUtils.isEmpty(ball)){
+    public void setBalls(String ball) {
+        if (TextUtils.isEmpty(ball)) {
             return;
         }
         this.ballNums = ball;
@@ -122,7 +143,13 @@ public class XXBallViewLayout extends GridLayout {
 
     private void initBallView(String ballNum, int ballColor, boolean isChecked) {
         XXBallView ballView = new XXBallView(context);
+        if(chackAll&&!isChecked){
+            isChecked=true;
+        }
         ballView.init(ballNum, textSize, ballColor, isChecked);//
+        if(isChecked){
+            selectedBalls.add(ballNum);
+        }
         if (isSelectable) {
             ballView.setBallViewSelectedListener(new XXBallView.BallViewSelectedListener() {
                 @Override
@@ -140,7 +167,8 @@ public class XXBallViewLayout extends GridLayout {
         ballView.setIsSelectable(isSelectable);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ballDiameter, ballDiameter);
-        ballView.setPadding(10, 0, 10, 10);
+
+        ballView.setPadding(padding, 0, padding, 10);
         ballView.setLayoutParams(params);
         ballKey.put(ballKey.size(), ballNum);
 
