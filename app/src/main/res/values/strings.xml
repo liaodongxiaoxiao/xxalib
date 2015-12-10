@@ -89,4 +89,6 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="action_about">关于</string>
+    <string name="title_activity_third_butter_knife">ThirdButterKnifeActivity</string>
+    <string name="s_use_butterknife">ButterKnife的使用</string>
 </resources>

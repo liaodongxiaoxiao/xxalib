@@ -90,6 +90,11 @@
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings">
         </activity>
+        <activity
+            android:name=".activity.ThirdButterKnifeActivity"
+            android:label="@string/title_activity_third_butter_knife"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

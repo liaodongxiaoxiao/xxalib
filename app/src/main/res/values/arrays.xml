@@ -45,12 +45,15 @@
 
     <array name="third_fragment_title">
         <item>Fresco</item>
+        <item>BufferKnife</item>
     </array>
     <array name="third_fragment_value">
         <item>com.ldxx.xxalib.activity.ThirdFrescoActivity</item>
+        <item>com.ldxx.xxalib.activity.ThirdButterKnifeActivity</item>
     </array>
     <array name="third_fragment_description">
         <item>Fresco 是有Facebook推出的强大开源库</item>
+        <item>Butter Knife 是由JakeWharton大神出品的View injection lib.</item>
     </array>
 
     <array name="case_fragment_title">
