@@ -109,7 +109,7 @@ public class XXBallViewLayout extends GridLayout {
         super.onMeasure(widthSpec, heightSpec);
         int width = getWidth() - getPaddingLeft() - getPaddingRight();
         padding = (width - columns * ballDiameter) / (columns - 1);
-        Log.e(TAG, "onMeasure: " + padding);
+        //Log.e(TAG, "onMeasure: " + padding);
     }
 
     private void initViewByBalls() {
