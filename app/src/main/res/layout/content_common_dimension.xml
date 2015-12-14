@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.ldxx.xxalib.activity.CommonDimensionActivity"
+        tools:showIn="@layout/activity_common_dimension">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/android_dimension"
+            android:textSize="18sp"/>
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="getResources().getDisplayMetrics().density):"/>
+        <TextView
+            android:id="@+id/density"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"/>
+        <TextView
+            android:id="@+id/density_dpi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="字体大小 在dimens.xml定义为18sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+        />
+        <TextView
+            android:id="@+id/font_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"/>
+        <TextView
+            android:id="@+id/font_size_s"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="宽度 在dimens.xml定义为18dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+        />
+
+        <TextView
+            android:id="@+id/width_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"/>
+        <TextView
+            android:id="@+id/width_size_s"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/text_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="我的字体大小是18sp(android:textSize='18sp')"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/text_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="我的字体大小是获取楼上的大小设置的"/>
+        <TextView
+            android:id="@+id/text_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="我的字体大小是在代码里直接设置setTextSize(18)"/>
+
+        <TextView
+            android:id="@+id/text_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="18sp"/>
+    </LinearLayout>
+</ScrollView>

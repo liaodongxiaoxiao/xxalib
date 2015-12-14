@@ -8,6 +8,7 @@
         <item>RecyclerView</item>
         <item>WebView</item>
         <item>Fonts</item>
+        <item>Dimension</item>
     </array>
     <array name="common_fragment_value">
         <item>com.ldxx.xxalib.activity.CommonCollapsingToolbarLayoutActivity</item>
@@ -16,14 +17,17 @@
         <item>com.ldxx.xxalib.activity.CommonRecyclerViewActivity</item>
         <item>com.ldxx.xxalib.activity.WebViewActivity</item>
         <item>com.ldxx.xxalib.activity.TextFontsActivity</item>
+        <item>com.ldxx.xxalib.activity.CommonDimensionActivity</item>
     </array>
     <array name="common_fragment_description">
-        <item>CollapsingToolbarLayout是design包中的</item>
+        <item>CollapsingToolbarLayout使用</item>
         <item>TabLayout+ViewPager</item>
         <item>CardView Demo</item>
         <item>RecyclerView用法</item>
         <item>WebView用法</item>
         <item>TextView Fonts 用法</item>
+        <item>关于Dimension</item>
+
     </array>
 
     <!-- for CustomViewFragment -->

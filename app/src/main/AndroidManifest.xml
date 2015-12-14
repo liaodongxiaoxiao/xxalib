@@ -95,6 +95,11 @@
             android:label="@string/title_activity_third_butter_knife"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".activity.CommonDimensionActivity"
+            android:label="@string/title_activity_common_dimension"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

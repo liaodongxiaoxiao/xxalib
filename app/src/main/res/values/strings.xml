@@ -91,4 +91,6 @@
     <string name="action_about">关于</string>
     <string name="title_activity_third_butter_knife">ThirdButterKnifeActivity</string>
     <string name="s_use_butterknife">ButterKnife的使用</string>
+    <string name="title_activity_common_dimension">CommonDimensionActivity</string>
+    <string name="android_dimension">Android getDimension</string>
 </resources>
