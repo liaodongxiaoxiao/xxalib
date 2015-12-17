@@ -6,4 +6,8 @@
 
     <color name="item_text_color">#FFFFFF</color>
     <color name="item_background_color">#FF4081</color>
+    <color name="dialog_background_color">#FFCCFF</color>
+    <color name="fab_background_color">#CCFF22</color>
+
+    <color name="dialog_background_scrim">#99323232</color>
 </resources>

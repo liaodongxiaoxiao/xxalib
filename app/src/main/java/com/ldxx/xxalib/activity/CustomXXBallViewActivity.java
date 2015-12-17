@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
+import com.ldxx.android.base.view.XBallViewLayout;
 import com.ldxx.android.base.view.XXBallView;
 import com.ldxx.android.base.view.XXBallViewLayout;
 import com.ldxx.xxalib.R;
@@ -17,7 +17,7 @@ import com.ldxx.xxalib.R;
 public class CustomXXBallViewActivity extends AppCompatActivity {
     private XXBallView ballView;
     private XXBallView nullBall;
-    private XXBallViewLayout ball_layout;
+    private XBallViewLayout ball_layout;
     private XXBallViewLayout add_layout;
 
     @Override
@@ -47,7 +47,7 @@ public class CustomXXBallViewActivity extends AppCompatActivity {
 
 
         nullBall = (XXBallView) findViewById(R.id.ball_null);
-        ball_layout = (XXBallViewLayout) findViewById(R.id.ball_layout);
+        ball_layout = (XBallViewLayout) findViewById(R.id.ball_layout);
         add_layout =  (XXBallViewLayout) findViewById(R.id.add_layout);
         add_layout.addBallView("07", Color.RED,true);
     }

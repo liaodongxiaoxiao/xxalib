@@ -93,4 +93,6 @@
     <string name="s_use_butterknife">ButterKnife的使用</string>
     <string name="title_activity_common_dimension">CommonDimensionActivity</string>
     <string name="android_dimension">Android getDimension</string>
+    <string name="title_activity_dialog">DialogActivity</string>
+    <string name="transition_dialog">test</string>
 </resources>

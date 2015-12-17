@@ -9,4 +9,5 @@
 
     <dimen name="dimen_font_size">18sp</dimen>
     <dimen name="dimen_width">18dp</dimen>
+    <dimen name="dialog_corners">10dp</dimen>
 </resources>

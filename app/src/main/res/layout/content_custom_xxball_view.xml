@@ -67,14 +67,14 @@
     </LinearLayout>
 
 
-    <com.ldxx.android.base.view.XXBallViewLayout
+    <com.ldxx.android.base.view.XBallViewLayout
         android:id="@+id/ball_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
         app:ball_color="@color/xx_blue"
         app:columns="7"
-        app:endBallNum="33"
+        app:endBallNum="16"
         app:selectable="true"
         app:startBallNum="1"
         app:text_size="16sp" />
