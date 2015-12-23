@@ -29,13 +29,11 @@ import java.util.List;
 
 public class CommonRecyclerViewActivity extends AppCompatActivity {
     private SwipeRefreshLayout mRefreshLayout;
-    private RecyclerView mRecyclerView;
     //
     private List<XXNewsInfo> mData = new ArrayList<>();
 
     private TAdapter mAdapter;
 
-    private final int PAGE_SIZE = 5;
     private int pageNum = 0;
 
     @Override
@@ -45,7 +43,9 @@ public class CommonRecyclerViewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class CommonRecyclerViewActivity extends AppCompatActivity {
 
         mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);
 
-        mRefreshLayout.setColorSchemeColors(R.color.btn_color1, R.color.xx_blue, R.color.btn_color2, R.color
+        mRefreshLayout.setColorSchemeResources(R.color.btn_color1, R.color.xx_blue, R.color.btn_color2, R.color
                 .btn_color3);
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -68,7 +68,7 @@ public class CommonRecyclerViewActivity extends AppCompatActivity {
             }
         });
         // get recycler view object
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         //set layout manager
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new TAdapter(CommonRecyclerViewActivity.this);
@@ -126,7 +126,7 @@ public class CommonRecyclerViewActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             try {
                 //mLoading = true;
-                Thread.sleep(4000l);
+                Thread.sleep(4000L);
                 //mLoading = false;
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -148,6 +148,7 @@ public class CommonRecyclerViewActivity extends AppCompatActivity {
             DbUtils db = DbUtils.create(getApplicationContext(), NewsContentProvider.DATABASE_NAME);
             try {
                 Thread.sleep(5000);
+                int PAGE_SIZE = 5;
                 List<XXNewsInfo> l = db.findAll(Selector.from(XXNewsInfo.class).orderBy("create_time", true).limit
                         (PAGE_SIZE).offset(PAGE_SIZE * pageNum));
                 if (l != null && !l.isEmpty()) {
