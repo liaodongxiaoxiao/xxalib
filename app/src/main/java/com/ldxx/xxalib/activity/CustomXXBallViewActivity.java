@@ -9,15 +9,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-import com.ldxx.android.base.view.XBallViewLayout;
-import com.ldxx.android.base.view.XXBallView;
 import com.ldxx.android.base.view.XXBallViewLayout;
+import com.ldxx.android.base.view.XXBallView;
 import com.ldxx.xxalib.R;
 
 public class CustomXXBallViewActivity extends AppCompatActivity {
     private XXBallView ballView;
     private XXBallView nullBall;
-    private XBallViewLayout ball_layout;
+    private XXBallViewLayout ball_layout;
     private XXBallViewLayout add_layout;
 
     @Override
@@ -40,14 +39,14 @@ public class CustomXXBallViewActivity extends AppCompatActivity {
         ballView.setBallViewSelectedListener(new XXBallView.BallViewSelectedListener() {
             @Override
             public void OnBallViewSelected(XXBallView view, boolean isSelected) {
-                Toast.makeText(CustomXXBallViewActivity.this, ballView.getBallNum() + "号球" +
+                Toast.makeText(CustomXXBallViewActivity.this, ballView.getText() + "号球" +
                         (isSelected ? "被选中" : "被取消选中"), Toast.LENGTH_SHORT).show();
             }
         });
 
 
         nullBall = (XXBallView) findViewById(R.id.ball_null);
-        ball_layout = (XBallViewLayout) findViewById(R.id.ball_layout);
+        ball_layout = (XXBallViewLayout) findViewById(R.id.ball_layout);
         add_layout =  (XXBallViewLayout) findViewById(R.id.add_layout);
         add_layout.addBallView("07", Color.RED,true);
     }
@@ -56,5 +55,9 @@ public class CustomXXBallViewActivity extends AppCompatActivity {
         Toast.makeText(CustomXXBallViewActivity.this,
                 "选中：" + ball_layout.getSelectedOrderBalls(false),
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void addBall(View view) {
+
     }
 }

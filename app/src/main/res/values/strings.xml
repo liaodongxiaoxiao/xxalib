@@ -95,4 +95,6 @@
     <string name="android_dimension">Android getDimension</string>
     <string name="title_activity_dialog">DialogActivity</string>
     <string name="transition_dialog">test</string>
+    <string name="title_activity_case_music_play">音乐播放</string>
+    <string name="title_activity_custom_circle_view">CustomCircleViewActivity</string>
 </resources>

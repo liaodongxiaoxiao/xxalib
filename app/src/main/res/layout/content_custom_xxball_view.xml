@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ldxx.xxalib.activity.CustomXXBallViewActivity"
-    tools:showIn="@layout/activity_custom_xxball_view">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              app:layout_behavior="@string/appbar_scrolling_view_behavior"
+              tools:context="com.ldxx.xxalib.activity.CustomXXBallViewActivity"
+              tools:showIn="@layout/activity_custom_xxball_view">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,40 +22,40 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@color/xx_gray"
-            app:ball_color="@color/xx_black"
-            app:num="27" />
+            app:ballColor="@color/xx_black"
+            app:text="27"/>
 
         <com.ldxx.android.base.view.XXBallView
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginLeft="5dp"
-            app:ball_color="@color/xx_blue"
-            app:num="08" />
+            app:ballColor="@color/xx_blue"
+            app:text="08"/>
 
         <com.ldxx.android.base.view.XXBallView
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginLeft="5dp"
             app:checked="true"
-            app:num="09" />
+            app:text="09"/>
 
         <com.ldxx.android.base.view.XXBallView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            app:ball_color="@color/xx_blue"
-            app:num="16"
-            app:selectable="true" />
+            app:ballColor="@color/xx_blue"
+            app:selectable="true"
+            app:text="16"/>
 
         <com.ldxx.android.base.view.XXBallView
             android:id="@+id/ball"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            app:ball_color="@color/xx_blue"
-            app:num="18"
+            app:ballColor="@color/xx_blue"
             app:selectable="true"
-            app:text_size="18dp" />
+            app:text="18"
+            app:textSize="18dp"/>
 
         <com.ldxx.android.base.view.XXBallView
             android:id="@+id/ball_null"
@@ -63,32 +63,42 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             app:selectable="true"
-            app:text_size="18dp" />
+            app:textSize="18dp"/>
+
+        <com.ldxx.android.base.view.XXBallView
+            android:id="@+id/circle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:selectable="true"
+            app:text="20"
+            app:textSize="18dp"/>
     </LinearLayout>
 
 
-    <com.ldxx.android.base.view.XBallViewLayout
+    <com.ldxx.android.base.view.XXBallViewLayout
         android:id="@+id/ball_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        app:ball_color="@color/xx_blue"
-        app:columns="7"
+        android:paddingLeft="10dp"
+        app:ballColor="@color/xx_blue"
+        app:columns="6"
         app:endBallNum="16"
+        app:ballDiameter="40dp"
         app:selectable="true"
         app:startBallNum="1"
-        app:text_size="16sp" />
+        app:textSize="16sp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="getSelectedBalls"
-        android:text="Get selected Balls" />
+        android:text="Get selected Balls"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="第xxx期开奖结果：" />
+        android:text="第xxx期开奖结果："/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,16 +107,22 @@
 
         <com.ldxx.android.base.view.XXBallViewLayout
             android:id="@+id/add_layout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:ballDiameter="35dp"
+            android:background="@color/xx_gray"
+            app:ballColor="@color/xx_blue"
+            app:ballDiameter="40dp"
             app:ballNums="02,07,18,19,20,27"
-            app:ball_color="@color/xx_blue"
-            app:checktedNums="02,07,18,19,20,27"
+            app:checkedNums="02,07,18,19,20,27"
             app:columns="7"
-            app:selectable="false" />
+            app:selectable="false"/>
 
 
     </LinearLayout>
+    <Button
+        android:id="@+id/add_ball"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addBall"/>
 
 </LinearLayout>

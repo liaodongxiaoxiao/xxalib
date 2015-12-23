@@ -33,18 +33,15 @@
     <!-- for CustomViewFragment -->
     <array name="custom_view_fragment_title">
         <item>XXBallView</item>
-        <item>WebView</item>
-        <item>Fonts</item>
+        <item>CircleView</item>
     </array>
     <array name="custom_view_fragment_value">
         <item>com.ldxx.xxalib.activity.CustomXXBallViewActivity</item>
-        <item>com.ldxx.xxalib.activity.WebViewActivity</item>
-        <item>com.ldxx.xxalib.activity.TextFontsActivity</item>
+        <item>com.ldxx.xxalib.activity.CustomCircleViewActivity</item>
     </array>
     <array name="custom_view_fragment_description">
         <item>自定义小球控件</item>
-        <item>WebView用法</item>
-        <item>TextView Fonts 用法</item>
+        <item>自定义view,ViewGroup</item>
     </array>
 
     <array name="third_fragment_title">
@@ -62,18 +59,21 @@
 
     <array name="case_fragment_title">
         <item>滚动播放新闻</item>
+        <item>音乐播放</item>
         <item>获取沈阳天气</item>
         <item>监听数据变化案例</item>
         <item>XML文件解析</item>
     </array>
     <array name="case_fragment_value">
         <item>com.ldxx.xxalib.activity.CaseHomeImageShowActivity</item>
+        <item>com.ldxx.xxalib.activity.CaseMusicPlayActivity</item>
         <item>com.ldxx.xxalib.activity.CaseHttpActivity</item>
         <item>com.ldxx.xxalib.activity.CaseDataChangeActivity</item>
         <item>com.ldxx.xxalib.activity.CaseXMLActivity</item>
     </array>
     <array name="case_fragment_description">
         <item>ViewPager展示新闻图片，Loader绑定数据库</item>
+        <item>音乐播放demo，Audio Focus</item>
         <item>使用Volley和OKHttp，HelloChart</item>
         <item>通过ContentObserver和Loader两种方式实现</item>
         <item>使用org.xmlpull.v1.XmlPullParser解析assets目录下的xml文件</item>

@@ -1,0 +1,11 @@
+<resources>
+    <attr name="backgroudColor" format="color"/>
+    <declare-styleable name="DLayout">
+        <attr name="textSize"/>
+        <attr name="backgroudColor"/>
+        <attr name="text"/>
+        <attr name="rowSpace"/>
+        <attr name="columnSpace"/>
+        <attr name="column" format="integer"/>
+    </declare-styleable>
+</resources>
