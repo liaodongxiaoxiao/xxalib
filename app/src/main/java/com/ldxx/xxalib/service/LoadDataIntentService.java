@@ -61,7 +61,7 @@ public class LoadDataIntentService extends IntentService {
 
                 }
             } catch (Exception e) {
-                XXLog.e(TAG, e.getMessage(), e);
+                XXLog.d(TAG, e.getMessage(), e);
             } finally {
                 XXLog.e(TAG, "新插入" + (5 - i) + "条数据");
                 stopSelf();

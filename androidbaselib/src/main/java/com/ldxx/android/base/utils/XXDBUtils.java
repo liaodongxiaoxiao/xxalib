@@ -20,6 +20,9 @@ public class XXDBUtils {
     }
 
     public static void copyDBtoSDcard(Context context) {
+        if(!XXSDCardUtils.isSDCardEnable()){
+            return;
+        }
         FileOutputStream out = null;
         FileInputStream in = null;
         try {

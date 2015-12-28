@@ -116,6 +116,16 @@
             android:label="@string/title_activity_custom_circle_view"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".activity.ThirdXRecyclerViewActivity"
+            android:label="@string/title_activity_third_xrecycler_view"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activity.CustomJsonViewActivity"
+            android:label="@string/title_activity_custom_json_view"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

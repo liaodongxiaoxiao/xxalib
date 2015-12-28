@@ -97,4 +97,8 @@
     <string name="transition_dialog">test</string>
     <string name="title_activity_case_music_play">音乐播放</string>
     <string name="title_activity_custom_circle_view">CustomCircleViewActivity</string>
+    <string name="title_activity_third_xrecycler_view">XRecyclerView的使用</string>
+    <string name="title_activity_custom_json_view">JsonView使用</string>
+    <string name="pm2_5">获取PM2.5预报</string>
+    <string name="android_0123">Android 0123 安卓</string>
 </resources>

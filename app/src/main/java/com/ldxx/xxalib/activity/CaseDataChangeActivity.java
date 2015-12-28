@@ -40,7 +40,6 @@ public class CaseDataChangeActivity extends AppCompatActivity implements LoaderM
     private TextView textView;
     private XXDateData mData;
     private List<XXDateData> datas = new ArrayList<>();
-    private ListView mListView;
     private DataAdapter mAdapter;
     private final UpdateHandler mHandler = new UpdateHandler(this);
 
@@ -61,7 +60,7 @@ public class CaseDataChangeActivity extends AppCompatActivity implements LoaderM
             }
         });
         textView = (TextView) findViewById(R.id.observer_text);
-        mListView = (ListView) findViewById(R.id.list);
+        ListView mListView = (ListView) findViewById(R.id.list);
         mAdapter = new DataAdapter(this, datas, R.layout.fragment_custom_item);
         mListView.setAdapter(mAdapter);
 
@@ -103,7 +102,7 @@ public class CaseDataChangeActivity extends AppCompatActivity implements LoaderM
         private final WeakReference<CaseDataChangeActivity> mActivity;
 
         public UpdateHandler(CaseDataChangeActivity activity) {
-            mActivity = new WeakReference<CaseDataChangeActivity>(activity);
+            mActivity = new WeakReference<>(activity);
         }
 
         @Override

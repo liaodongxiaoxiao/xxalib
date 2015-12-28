@@ -3,7 +3,6 @@ package com.ldxx.android.base.view;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -13,21 +12,25 @@ import android.widget.TextView;
  */
 public class JsonTextView extends TextView {
     private CharSequence initialValue;
-private Button btn;
     private int i = 0;
 
     private StringBuffer sb = new StringBuffer();
 
     public JsonTextView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public JsonTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public JsonTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init() {
+        this.setHorizontalScrollBarEnabled(true);
     }
 
     @Override
@@ -116,7 +119,7 @@ private Button btn;
 
     private static String getTabStr(int i) {
         String str = " ";
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int j = 0; j < i * 4; j++) {
             sb.append(str);
         }

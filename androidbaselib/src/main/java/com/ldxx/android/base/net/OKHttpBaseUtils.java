@@ -79,6 +79,21 @@ public class OKHttpBaseUtils {
         return postBase(url, null, formBody.build());
     }
 
+
+    public static ResponseBody postBaseWithHeaders(String url, Headers headers, RequestBody body) throws IOException {
+        Request.Builder builder = new Request.Builder();
+        builder.url(url);
+        if (headers != null && headers.size() > 0) {
+            builder.headers(headers);
+        }
+        if (body != null) {
+            builder.post(body);
+        }
+        Response response = client.newCall(builder.build()).execute();
+        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        return response.body();
+    }
+
     private static ResponseBody postBase(String url, Headers headers, RequestBody body) throws IOException {
         Request.Builder builder = new Request.Builder();
         builder.url(url);

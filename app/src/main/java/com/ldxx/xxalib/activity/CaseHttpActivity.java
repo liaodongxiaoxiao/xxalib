@@ -12,35 +12,25 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.ldxx.android.base.net.OKHttpBaseUtils;
 import com.ldxx.utils.DateUtils;
 import com.ldxx.xxalib.R;
-import com.ldxx.xxalib.beans.XXWInfo;
 import com.ldxx.xxalib.beans.XXWeather;
 import com.ldxx.xxalib.utils.WeatherUtils;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
-import com.lidroid.xutils.db.sqlite.WhereBuilder;
-import com.squareup.okhttp.Headers;
-import com.squareup.okhttp.MultipartBuilder;
-import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.ResponseBody;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CaseHttpActivity extends AppCompatActivity {
     public static final String DATABASE_NAME = "xxweather.db";
     private final String TAG = this.getClass().getSimpleName();
-    private final String URL = "http://apis.baidu.com/apistore/weatherservice/recentweathers";
+    private final String URL = "http://apis.baidu.com/apistore/weatherservice/cityid";
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private TextView mEmptyInfo;
     //private JsonTextView mJsonTextView;
@@ -80,7 +70,7 @@ public class CaseHttpActivity extends AppCompatActivity {
 
     private void initView() {
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);
-        mSwipeRefreshLayout.setColorSchemeColors(R.color.btn_color1, R.color.xx_blue, R.color.btn_color2, R.color
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.btn_color1, R.color.xx_blue, R.color.btn_color2, R.color
                 .btn_color3);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -104,12 +94,12 @@ public class CaseHttpActivity extends AppCompatActivity {
     private XXWeather loadData() {
         XXWeather weather = null;
         try {
+            db.findAll(Selector.from(XXWeather.class));
             weather = db.findFirst(Selector.from(XXWeather.class).where("date", "=", DateUtils.getCurrentDate()));
         } catch (Exception e) {
             Log.e(TAG, "查询本地天气数据出错", e);
-        } finally {
-            return weather;
         }
+        return weather;
     }
 
     private void setWeatherInfo(XXWeather weather) {
@@ -163,8 +153,10 @@ public class CaseHttpActivity extends AppCompatActivity {
             headers.put("apiKey", "d6e91c2b841ef37858964106aa83749c");
 
             try {
+                //OKHttpPostUtils<XXWeather>.get(XXWeather.class).objectWithPost();
                 ResponseBody body = OKHttpBaseUtils.postBase(URL, headers, bodys);
                 //Gson gson = new Gson();
+
                 JsonParser parser = new JsonParser();
                 JsonElement tradeElement = parser.parse(body.charStream());
                 //Log.e(TAG, "doInBackground: "+tradeElement );

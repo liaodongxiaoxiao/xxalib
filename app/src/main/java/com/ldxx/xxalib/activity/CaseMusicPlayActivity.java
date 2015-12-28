@@ -57,7 +57,6 @@ public class CaseMusicPlayActivity extends AppCompatActivity {
     ImageView musicPlayPause;
 
     private List<XXMusic> musicData = new ArrayList<>();
-    private MusicAdapter adapter;
 
     private XXMusic currentMusic;
     private boolean isPlaying;
@@ -72,7 +71,7 @@ public class CaseMusicPlayActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         loadMusic();
 
-        adapter = new MusicAdapter(this, musicData, R.layout.content_case_music_item);
+        MusicAdapter adapter = new MusicAdapter(this, musicData, R.layout.content_case_music_item);
         musicList.setAdapter(adapter);
 
         Intent intent = new Intent(this, MusicPlayService.class);

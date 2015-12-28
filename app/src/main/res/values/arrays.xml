@@ -33,28 +33,34 @@
     <!-- for CustomViewFragment -->
     <array name="custom_view_fragment_title">
         <item>XXBallView</item>
+        <item>JsonTextView</item>
         <item>CircleView</item>
     </array>
     <array name="custom_view_fragment_value">
         <item>com.ldxx.xxalib.activity.CustomXXBallViewActivity</item>
+        <item>com.ldxx.xxalib.activity.CustomJsonViewActivity</item>
         <item>com.ldxx.xxalib.activity.CustomCircleViewActivity</item>
     </array>
     <array name="custom_view_fragment_description">
         <item>自定义小球控件</item>
+        <item>继承于TextView，可以展示Json格式的字符串</item>
         <item>自定义view,ViewGroup</item>
     </array>
 
     <array name="third_fragment_title">
         <item>Fresco</item>
         <item>BufferKnife</item>
+        <item>XRecycleView</item>
     </array>
     <array name="third_fragment_value">
         <item>com.ldxx.xxalib.activity.ThirdFrescoActivity</item>
         <item>com.ldxx.xxalib.activity.ThirdButterKnifeActivity</item>
+        <item>com.ldxx.xxalib.activity.ThirdXRecyclerViewActivity</item>
     </array>
     <array name="third_fragment_description">
         <item>Fresco 是有Facebook推出的强大开源库</item>
         <item>Butter Knife 是由JakeWharton大神出品的View injection lib.</item>
+        <item>第三方RecyclerView，完美的支持下拉上拉刷新等功能</item>
     </array>
 
     <array name="case_fragment_title">

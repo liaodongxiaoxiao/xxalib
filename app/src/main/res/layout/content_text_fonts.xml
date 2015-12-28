@@ -25,7 +25,7 @@
         android:id="@+id/fonts_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android 0123 安卓"
+        android:text="@string/android_0123"
         android:textSize="30dp"
         android:textStyle="bold" />
     <TextView
