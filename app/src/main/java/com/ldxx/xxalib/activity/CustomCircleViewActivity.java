@@ -7,10 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.ldxx.android.base.view.DViewGridView;
 import com.ldxx.xxalib.R;
 
 public class CustomCircleViewActivity extends AppCompatActivity {
-
+DViewGridView gridView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,11 @@ public class CustomCircleViewActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        gridView = (DViewGridView) findViewById(R.id.gr);
+    }
+
+    public void addBall(View view){
+        gridView.addText("国");
     }
 
 }

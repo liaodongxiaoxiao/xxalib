@@ -64,7 +64,7 @@ public class CustomJsonViewActivity extends AppCompatActivity {
                     .header("apikey", "d6e91c2b841ef37858964106aa83749c");
             XXOKHttpUtils utils = builder.build();
             try {
-                final XXPM25 pm = utils.getObjectWithPost();
+                final XXPM25 pm = utils.getObject();
                 //System.out.print(pm.toString());
                 Log.e(TAG, "run: " + pm.toString());
                 Thread.sleep(2000L);

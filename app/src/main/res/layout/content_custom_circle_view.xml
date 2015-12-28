@@ -51,13 +51,29 @@
               android:text="美"
               android:textColor="@color/btn_color2"
               android:textSize="20sp"/>
-    <com.ldxx.android.base.view.DLayout
+    <com.ldxx.android.base.view.DViewGridView
         android:id="@+id/d_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:column="4"
-        app:text="我,爱,北,京,天,安,门">
+        android:numColumns="4"
+        app:text="我,爱,北,京,天,安,门"
+        app:textSize="30sp">
 
-    </com.ldxx.android.base.view.DLayout>
+    </com.ldxx.android.base.view.DViewGridView>
+
+    <com.ldxx.android.base.view.DViewGridView
+        android:id="@+id/gr"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="3"
+        app:text="中"
+        app:textSize="40sp"
+    />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addBall"
+        android:text="@string/s_btn_add"/>
 
 </LinearLayout>

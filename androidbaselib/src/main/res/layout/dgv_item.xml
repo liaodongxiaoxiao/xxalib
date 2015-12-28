@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ldxx.android.base.view.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="match_parent">
+    <com.ldxx.android.base.view.DView
+        android:id="@+id/d_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</com.ldxx.android.base.view.SquareLayout>

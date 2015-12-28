@@ -2,6 +2,7 @@ package com.ldxx.android.base.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.text.TextUtils;
@@ -47,6 +48,8 @@ public class DLayout extends ViewGroup {
         init(context, attrs, defStyleAttr);
     }
 
+
+
     private int scale;
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
@@ -84,9 +87,11 @@ public class DLayout extends ViewGroup {
 
     private void fillView() {
         String[] str = text.split(",");
-        TextView tv;
+        //TextView tv;
+        DView tv;
         for (String s : str) {
-            tv = new TextView(context);
+            //tv = new TextView(context);
+            tv = new DView(context);
             tv.setTextSize(textSize);
             tv.setText(s);
             LinearLayout.LayoutParams pa = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
@@ -97,7 +102,7 @@ public class DLayout extends ViewGroup {
                 tv.setBackgroundColor(backgroudColor);
             }
 
-            tv.setTextColor(Color.WHITE);
+            //tv.setTextColor(Color.WHITE);
             tv.setOnClickListener(listener);
             this.addView(tv);
         }
@@ -141,6 +146,8 @@ public class DLayout extends ViewGroup {
         return (int) Math.ceil(getChildCount() * 1d / column);
     }
 
+
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childLeft = getPaddingLeft();
@@ -150,8 +157,8 @@ public class DLayout extends ViewGroup {
         int childWidth;
         int childHeight;
 
-        childWidth = ((width - getPaddingLeft() - getPaddingRight() - (column - 1) * columnSpace) / column);
-        childHeight = ((height - getPaddingTop() - getPaddingBottom() - (getRowCount() - 1) * rowSpace) / getRowCount());
+        childWidth = (width - getPaddingLeft() - getPaddingRight() - (column - 1) * columnSpace) / column;
+        childHeight = (height - getPaddingTop() - getPaddingBottom() - (getRowCount() - 1) * rowSpace) / getRowCount();
 
         final int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -160,8 +167,7 @@ public class DLayout extends ViewGroup {
             if (child.getVisibility() != GONE) {
                 //child.layout(childLeft, childTop, childWidth, childHeight);
                 child.layout(childLeft, childTop, childLeft + childWidth, childTop + childHeight);
-
-                Log.e(TAG, i + " onLayout: " + childLeft + " " + childTop);
+                //Log.e(TAG, i + " onLayout: " + childLeft + " " + childTop);
                 if ((i + 1) % column == 0) {
                     childLeft = getPaddingLeft();
                     childTop += childHeight + rowSpace;
