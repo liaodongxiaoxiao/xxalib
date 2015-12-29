@@ -135,6 +135,14 @@ public class XXBallViewsLayout extends GridView {
         return XXUtils.listToOrderString(selectedBalls, desc);
     }
 
+    public void setBalls(String ball) {
+        if (TextUtils.isEmpty(ball)) {
+            return;
+        }
+        this.ballNums = ball;
+        initViewByBalls();
+    }
+
     /*******************************************************************/
 
     class BallViewAdapter extends BaseAdapter {
