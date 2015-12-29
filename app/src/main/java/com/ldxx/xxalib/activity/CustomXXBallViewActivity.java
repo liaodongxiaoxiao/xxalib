@@ -9,15 +9,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-import com.ldxx.android.base.view.XXBallViewLayout;
 import com.ldxx.android.base.view.XXBallView;
+import com.ldxx.android.base.view.XXBallViewsLayout;
 import com.ldxx.xxalib.R;
 
 public class CustomXXBallViewActivity extends AppCompatActivity {
     private XXBallView ballView;
     private XXBallView nullBall;
-    private XXBallViewLayout ball_layout;
-    private XXBallViewLayout add_layout;
+    private XXBallViewsLayout ball_layout;
+    private XXBallViewsLayout add_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class CustomXXBallViewActivity extends AppCompatActivity {
 
 
         nullBall = (XXBallView) findViewById(R.id.ball_null);
-        ball_layout = (XXBallViewLayout) findViewById(R.id.ball_layout);
-        add_layout =  (XXBallViewLayout) findViewById(R.id.add_layout);
+        ball_layout = (XXBallViewsLayout) findViewById(R.id.ball_layout);
+        add_layout =  (XXBallViewsLayout) findViewById(R.id.add_layout);
         add_layout.addBallView("07", Color.RED,true);
     }
 

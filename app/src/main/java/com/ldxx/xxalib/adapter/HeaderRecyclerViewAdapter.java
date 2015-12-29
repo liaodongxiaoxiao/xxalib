@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * RecyclerView.Adapter extension created to add header capability support and a generic List of
  * items really useful most of the cases. You should extend from this class and override
- * onCreateViewHolder to create your ViewHolder instances and onBindViewHolder methods to draw your
+ * onCreateViewHolder to create your BallInfo instances and onBindViewHolder methods to draw your
  * user interface as you wish.
  * <p/>
  * The usage of List<T> items member is not mandatory. If you are going to provide your custom

@@ -76,13 +76,13 @@
     </LinearLayout>
 
 
-    <com.ldxx.android.base.view.XXBallViewLayout
+    <com.ldxx.android.base.view.XXBallViewsLayout
         android:id="@+id/ball_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         app:ballColor="@color/xx_blue"
-        app:columns="6"
+        android:numColumns="6"
         app:endBallNum="16"
         app:ballDiameter="40dp"
         app:selectable="true"
@@ -105,11 +105,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.ldxx.android.base.view.XXBallViewLayout
+        <com.ldxx.android.base.view.XXBallViewsLayout
             android:id="@+id/add_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/xx_gray"
+            android:numColumns="7"
+            android:horizontalSpacing="10dp"
             app:ballColor="@color/xx_blue"
             app:ballDiameter="40dp"
             app:ballNums="02,07,18,19,20,27"

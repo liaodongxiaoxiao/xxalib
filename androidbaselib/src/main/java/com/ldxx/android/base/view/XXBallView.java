@@ -29,7 +29,7 @@ public class XXBallView extends View {
      */
     private int mCircleColor = Color.RED;
     /**
-     * text size default 14
+     * text size default 16
      */
     private float mTextSize = 16;
 
@@ -92,7 +92,7 @@ public class XXBallView extends View {
 
             mText = a.getString(R.styleable.XXBallView_text);
             scale = con.getResources().getDisplayMetrics().density;
-            mTextSize = a.getDimension(R.styleable.XXBallView_textSize, mTextSize);
+            mTextSize = a.getDimension(R.styleable.XXBallView_textSize, mTextSize * scale);
 
             mCircleColor = a.getColor(R.styleable.XXBallView_ballColor, mCircleColor);
 
@@ -120,6 +120,7 @@ public class XXBallView extends View {
         mCirclePaint = new Paint();
         mCirclePaint.setColor(mCircleColor);
         mCirclePaint.setStyle(Paint.Style.FILL);
+        mCirclePaint.setStrokeWidth(2);
         mCirclePaint.setAntiAlias(true);
     }
 
@@ -131,7 +132,7 @@ public class XXBallView extends View {
     }
 
     private void invalidateTextPaintAndMeasurements() {
-        mTextPaint.setColor(Color.WHITE);
+        //mTextPaint.setColor(Color.WHITE);
         mTextPaint.setTextSize(mTextSize);
 
         Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
@@ -142,7 +143,7 @@ public class XXBallView extends View {
     private int radius;
 
     public void setRadius(int radius) {
-        this.radius = radius;
+        this.radius = radius - 4;
         invalidate();
     }
 
@@ -151,46 +152,40 @@ public class XXBallView extends View {
         super.onDraw(canvas);
         //canvas.drawColor(Color.YELLOW);
 
-        int paddingLeft = getPaddingLeft() == 0 ? 3 : getPaddingLeft();
-        int paddingTop = getPaddingTop() == 0 ? 3 : getPaddingTop();
-        int paddingRight = getPaddingRight();
-        int paddingBottom = getPaddingBottom();
 
-        int contentWidth = getWidth() - paddingLeft - paddingRight;
-        int contentHeight = getHeight() - paddingTop - paddingBottom;
-        int x = paddingLeft + contentWidth / 2;
-        int y = paddingTop + contentHeight / 2;
+        int contentWidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
+        int contentHeight = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
+        int x = contentWidth / 2;
+        int y = contentHeight / 2;
         if (radius <= 0) {
-            radius = Math.min(contentHeight, contentWidth) / 2;
+            radius = (Math.min(contentHeight, contentWidth) / 2) - 4;
         }
 
         // Draw the circle
         canvas.drawCircle(x, y, radius, mCirclePaint);
-        // Draw the text.
-        // baseline
-        float textBaseY = getMeasuredHeight() - (getMeasuredHeight() - mTextHeight) / 2 - textBottom;
-
-
-        /*Paint rectPaint = new Paint();
-        rectPaint.setColor(Color.YELLOW);
-        Rect rect = new Rect();
-        rect.bottom = y + mTextBounds.height() / 2;
-        rect.top = y - mTextBounds.height() / 2;
-        rect.left = x - mTextBounds.width() / 2;
-        rect.right = x + mTextBounds.width() / 2;
-        canvas.drawRect(rect, rectPaint);*/
 
         //draw text if text dose not null
         if (!TextUtils.isEmpty(mText)) {
-            canvas.drawText(mText, (x - mTextBounds.width() / 2) + 2 * scale - 1, textBaseY, mTextPaint);
+            /*Paint rectPaint = new Paint();
+            rectPaint.setColor(Color.YELLOW);
+            Rect rect = new Rect();
+            rect.bottom = y + mTextBounds.height() / 2;
+            rect.top = y - mTextBounds.height() / 2;
+            rect.left = x - mTextBounds.width() / 2;
+            rect.right = x + mTextBounds.width() / 2;
+            canvas.drawRect(rect, rectPaint);*/
+
+            // Draw the text.
+            float textBaseY = getMeasuredHeight() - (getMeasuredHeight() - mTextHeight) / 2 - textBottom;
+            canvas.drawText(mText, x, textBaseY, mTextPaint);
         }
 
         /*Paint linePaint = new Paint();
         linePaint.setColor(Color.WHITE);
-        canvas.drawLine(x, y, x, y - r, linePaint);
-        canvas.drawLine(x, y, x, y + r, linePaint);
-        canvas.drawLine(x, y, x - r, y, linePaint);
-        canvas.drawLine(x, y, x + r, y, linePaint);*/
+        canvas.drawLine(x, y, x, y - radius, linePaint);
+        canvas.drawLine(x, y, x, y + radius, linePaint);
+        canvas.drawLine(x, y, x - radius, y, linePaint);
+        canvas.drawLine(x, y, x + radius, y, linePaint);*/
 
 
     }
@@ -354,5 +349,10 @@ public class XXBallView extends View {
      */
     public void setBallViewSelectedListener(BallViewSelectedListener ballViewSelectedListener) {
         this.ballViewSelectedListener = ballViewSelectedListener;
+    }
+
+    @Override
+    public boolean isSelected() {
+        return isSelected;
     }
 }
