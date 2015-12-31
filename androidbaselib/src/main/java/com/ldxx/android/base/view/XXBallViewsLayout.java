@@ -92,8 +92,6 @@ public class XXBallViewsLayout extends GridView {
         this.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e(TAG, "onItemClick: " + position + " " + view.getClass().getName());
-
             }
         });
 
@@ -103,7 +101,7 @@ public class XXBallViewsLayout extends GridView {
     private void initViewByBalls() {
         String[] bs = ballNums.split(",");
         for (String num : bs) {
-            balls.add(new BallInfo(num, ballColor, isChecked(num)));
+            balls.add(new BallInfo(num, ballColor));
         }
         adapter.notifyDataSetChanged();
     }
@@ -113,13 +111,14 @@ public class XXBallViewsLayout extends GridView {
         String num;
         for (int i = startBallNum; i <= endBallNum; i++) {
             num = StringUtils.getFullBall(i + "");
-            balls.add(new BallInfo(num, ballColor, isChecked(num)));
+            balls.add(new BallInfo(num, ballColor));
         }
         adapter.notifyDataSetChanged();
     }
 
     private boolean isChecked(String ballNum) {
-        return checkAll || !(TextUtils.isEmpty(ballNums) || TextUtils.isEmpty(checkedNums)) && checkedNums.contains(ballNum);
+        return checkAll || !TextUtils.isEmpty(ballNum) && !TextUtils.isEmpty(checkedNums) && checkedNums.contains(ballNum)
+                || selectedBalls.contains(ballNum);
     }
 
     public void addBallView(String s, int color, boolean isChecked) {
@@ -141,6 +140,11 @@ public class XXBallViewsLayout extends GridView {
         }
         this.ballNums = ball;
         initViewByBalls();
+    }
+
+    public void setCheckedNums(String checkedNums) {
+        this.checkedNums = checkedNums;
+        adapter.notifyDataSetChanged();
     }
 
     /*******************************************************************/
@@ -178,13 +182,16 @@ public class XXBallViewsLayout extends GridView {
             ballView.setText(ball.getNum());
             ballView.setBallColor(ball.getColor());
             ballView.setIsSelectable(false);
-            if (ball.isChecked()) {
-                selectedBalls.add(ball.getNum());
+            if (ball.isChecked() || isChecked(ball.getNum())) {
+                if(!selectedBalls.contains(ball.getNum())){
+                    selectedBalls.add(ball.getNum());
+                }
                 ballView.setChecked(true);
             } else {
                 ballView.setChecked(false);
+                selectedBalls.remove(ball.getNum());
             }
-            ballView.setChecked(ball.isChecked());
+
             ballView.setTextSize(textSize);
 
             ballView.setOnClickListener(new OnClickListener() {
@@ -214,6 +221,11 @@ public class XXBallViewsLayout extends GridView {
 
         public BallInfo(String num, int color, boolean checked) {
             this.checked = checked;
+            this.color = color;
+            this.num = num;
+        }
+
+        public BallInfo(String num, int color) {
             this.color = color;
             this.num = num;
         }

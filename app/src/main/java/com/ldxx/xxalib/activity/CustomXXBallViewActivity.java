@@ -47,8 +47,8 @@ public class CustomXXBallViewActivity extends AppCompatActivity {
 
         nullBall = (XXBallView) findViewById(R.id.ball_null);
         ball_layout = (XXBallViewsLayout) findViewById(R.id.ball_layout);
-        add_layout =  (XXBallViewsLayout) findViewById(R.id.add_layout);
-        add_layout.addBallView("07", Color.RED,true);
+        add_layout = (XXBallViewsLayout) findViewById(R.id.add_layout);
+        add_layout.addBallView("07", Color.RED, true);
     }
 
     public void getSelectedBalls(View view) {
@@ -59,5 +59,9 @@ public class CustomXXBallViewActivity extends AppCompatActivity {
 
     public void addBall(View view) {
 
+    }
+
+    public void selectBalls(View view) {
+        ball_layout.setCheckedNums("07,08");
     }
 }
