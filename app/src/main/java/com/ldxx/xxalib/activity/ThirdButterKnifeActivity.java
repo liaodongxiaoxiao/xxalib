@@ -32,7 +32,7 @@ public class ThirdButterKnifeActivity extends AppCompatActivity {
     @Bind(R.id.butter_knife_title)
     TextView textView;
 
-    @BindString(R.string.s_use_butterknife)
+    @BindString(R.string.s_use_butter_knife)
     String sTitle;
 
     @Bind(R.id.list)

@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:text="@string/s_use_butterknife"/>
+        tools:text="@string/s_use_butter_knife"/>
     <TextView
         android:id="@+id/contents"
         android:layout_width="match_parent"

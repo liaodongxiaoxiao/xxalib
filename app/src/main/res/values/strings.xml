@@ -16,7 +16,7 @@
     <string name="title_activity_text_fonts">TextFontsActivity</string>
     <string name="s_custom_view">自定义控件</string>
     <string name="title_activity_custom_xxball_view">CustomXXBallViewActivity</string>
-    <string name="title_activity_thrid_fresco">ThridFrescoActivity</string>
+    <string name="title_activity_third_fresco">ThridFrescoActivity</string>
     <string name="s_use_third_lib">第三方库使用</string>
     <string name="title_activity_common_collapsing_toolbar_layout">
         CollapsingToolbarLayout
@@ -90,7 +90,7 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="action_about">关于</string>
     <string name="title_activity_third_butter_knife">ThirdButterKnifeActivity</string>
-    <string name="s_use_butterknife">ButterKnife的使用</string>
+    <string name="s_use_butter_knife">ButterKnife的使用</string>
     <string name="title_activity_common_dimension">CommonDimensionActivity</string>
     <string name="android_dimension">Android getDimension</string>
     <string name="title_activity_dialog">DialogActivity</string>
@@ -101,4 +101,6 @@
     <string name="title_activity_custom_json_view">JsonView使用</string>
     <string name="pm2_5">获取PM2.5预报</string>
     <string name="android_0123">Android 0123 安卓</string>
+    <string name="title_activity_third_realm">Realm使用</string>
+    <string name="refresh">refresh</string>
 </resources>

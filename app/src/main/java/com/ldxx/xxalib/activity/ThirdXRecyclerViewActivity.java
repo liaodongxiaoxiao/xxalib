@@ -42,7 +42,7 @@ public class ThirdXRecyclerViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thrid_xrecycler_view);
+        setContentView(R.layout.activity_third_xrecycler_view);
         ButterKnife.bind(this);
 
         //设置toolbar

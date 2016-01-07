@@ -39,7 +39,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.ThirdFrescoActivity"
-            android:label="@string/title_activity_thrid_fresco"
+            android:label="@string/title_activity_third_fresco"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.CommonCollapsingToolbarLayoutActivity"
@@ -124,6 +124,11 @@
         <activity
             android:name=".activity.CustomJsonViewActivity"
             android:label="@string/title_activity_custom_json_view"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activity.ThirdRealmActivity"
+            android:label="@string/title_activity_third_realm"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

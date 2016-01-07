@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 ext {
@@ -37,4 +41,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.jcodecraeer:xrecyclerview:1.2.6'
 
+    compile 'io.realm:realm-android:0.87.0'
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
 }

@@ -27,15 +27,40 @@ public class DateUtils {
         return format2.format(date);
     }
 
-    public static String getCurrentDate() {
+    /**
+     * 将long类型的时间，转成指定格式的时间字符串
+     * @param time  long类型的时间
+     * @param pattern 生成的格式
+     * @return 返回时间字符串
+     */
+    public static String dateToStr(long time,String pattern){
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(time);
+        return dateToStr(c.getTime(),pattern);
+    }
 
+    /**
+     * 返回当前时间字符串，格式为“yyyy-MM-dd”
+     * @return 当前时间
+     */
+    public static String getCurrentDate() {
         return getCurrentDate(PATTERN3);
     }
 
+    /**
+     * 返回当前时间字符串，按指定格式
+     * @param pattern 指定格式
+     * @return 当前时间字符串
+     */
     public static String getCurrentDate(String pattern) {
         Calendar c = Calendar.getInstance();
         return dateToStr(c.getTime(), pattern);
     }
+
+    public static Date getCurrentDateByPattern(String pattern){
+        return stringToDate(getCurrentDate(pattern),pattern);
+    }
+
 
     /**
      * <p>Discription:Date格式化,将date对象转换成“yyyy-MM-dd”类型的字符串</p>
@@ -84,8 +109,6 @@ public class DateUtils {
      * @param dateStr
      * @param pattern
      * @return
-     * @author ldxx    2014年12月6日
-     * @update [修改人] [修改时间] [变更描述]
      */
     public static Date stringToDate(String dateStr, String pattern) {
         if (StringUtils.isEmptyIncludeNullStr(dateStr)) {

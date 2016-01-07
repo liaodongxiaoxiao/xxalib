@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
@@ -28,7 +27,7 @@ public class ThirdFrescoActivity extends AppCompatActivity {
         // init Fresco
         Fresco.initialize(this);
 
-        setContentView(R.layout.activity_thrid_fresco);
+        setContentView(R.layout.activity_third_fresco);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
