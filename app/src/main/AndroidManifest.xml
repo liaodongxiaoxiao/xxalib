@@ -131,6 +131,11 @@
             android:label="@string/title_activity_third_realm"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".activity.AnimationCurvedFabRevealActivity"
+            android:label="@string/title_activity_animation_curved_fab_reveal"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

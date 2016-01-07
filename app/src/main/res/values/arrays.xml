@@ -87,4 +87,14 @@
         <item>通过ContentObserver和Loader两种方式实现</item>
         <item>使用org.xmlpull.v1.XmlPullParser解析assets目录下的xml文件</item>
     </array>
+
+    <array name="animation_fragment_title">
+        <item>Curved-Fab-Reveal-Example</item>
+    </array>
+    <array name="animation_fragment_value">
+        <item>com.ldxx.xxalib.activity.AnimationCurvedFabRevealActivity</item>
+    </array>
+    <array name="animation_fragment_description">
+        <item>代码来源：https://github.com/saulmm/Curved-Fab-Reveal-Example</item>
+    </array>
 </resources>
