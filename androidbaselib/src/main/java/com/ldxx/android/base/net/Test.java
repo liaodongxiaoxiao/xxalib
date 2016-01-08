@@ -2,8 +2,8 @@ package com.ldxx.android.base.net;
 
 import com.ldxx.android.base.bean.XXPM25;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by LDXX on 2015/12/24.
@@ -11,22 +11,26 @@ import java.util.Map;
  * liaodongxiaoxiao@gmail.com
  */
 public class Test {
+
     public static final String URL = "http://apis.baidu.com/apistore/aqiservice/aqi?city=沈阳";
     public static final String TRAIN_QUERY = "http://a.apix.cn/apixlife/ticket/rest?from=BJP&to=TJP&date=2015-12-28";
-    public static final String U = "http://192.168.0.71:8080/XXLotteryMVC//recommend/getHistoryRecommends.do";
 
     public static void main(String[] args) {
-        //trains();
+        String url ="http://192.168.0.71:8080/XXLotteryMVC//recommend/getHistoryRecommends.do";
         XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
-        Map<String, String> map = new HashMap<>();
-        map.put("num", "5");
-        builder.url(U).bodys(map);
-        XXOKHttpUtils utils = builder.build();
+        XXOKHttpUtils utils =builder.url(url).body("num","5").build();
         try {
-            System.out.print(utils.getList().size());
-        } catch (Exception e) {
+            List<Recommend> list = utils.getList(Recommend.class);
+            for(Recommend r:list){
+                System.out.println(r.toString());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XXOKHttpException e) {
             e.printStackTrace();
         }
+        //trains();
     }
 
     private static void trains() {
@@ -43,13 +47,12 @@ public class Test {
     private static void pm25() {
         XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
         //
-        builder.obj(XXPM25.class)
-                .url(URL)
+        builder.url(URL)
                 .header("apikey", "d6e91c2b841ef37858964106aa83749c");
         //.body("city", "沈阳");
         XXOKHttpUtils utils = builder.build();
         try {
-            XXPM25 pm = utils.getObject();
+            XXPM25 pm = utils.getObject(XXPM25.class);
             System.out.print(pm.toString());
         } catch (Exception e) {
             e.printStackTrace();
