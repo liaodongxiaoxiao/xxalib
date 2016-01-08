@@ -136,6 +136,11 @@
             android:label="@string/title_activity_animation_curved_fab_reveal"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".activity.CommonStatusBarActivity"
+            android:label="@string/title_activity_common_status_bar"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

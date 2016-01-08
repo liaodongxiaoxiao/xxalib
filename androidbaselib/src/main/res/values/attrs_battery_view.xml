@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="XXBatteryView">
+        <attr name="direction" format="enum">
+            <enum name="LEFT" value="0x001"/>
+            <enum name="RIGHT" value="0x002"/>
+            <enum name="UP" value="0x003"/>
+            <enum name="DOWN" value="0x004"/>
+        </attr>
+    </declare-styleable>
+</resources>

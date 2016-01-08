@@ -9,6 +9,7 @@
         <item>WebView</item>
         <item>Fonts</item>
         <item>Dimension</item>
+        <item>StatusBar</item>
     </array>
     <array name="common_fragment_value">
         <item>com.ldxx.xxalib.activity.CommonCollapsingToolbarLayoutActivity</item>
@@ -18,6 +19,7 @@
         <item>com.ldxx.xxalib.activity.WebViewActivity</item>
         <item>com.ldxx.xxalib.activity.TextFontsActivity</item>
         <item>com.ldxx.xxalib.activity.CommonDimensionActivity</item>
+        <item>com.ldxx.xxalib.activity.CommonStatusBarActivity</item>
     </array>
     <array name="common_fragment_description">
         <item>CollapsingToolbarLayout使用</item>
@@ -27,7 +29,7 @@
         <item>WebView用法</item>
         <item>TextView Fonts 用法</item>
         <item>关于Dimension</item>
-
+        <item>状态栏</item>
     </array>
 
     <!-- for CustomViewFragment -->

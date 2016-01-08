@@ -107,4 +107,5 @@
     <string name="refresh">refresh</string>
     <string name="title_activity_animation_curved_fab_reveal">AnimationCurvedFabRevealActivity
     </string>
+    <string name="title_activity_common_status_bar">状态栏用法</string>
 </resources>
