@@ -12,6 +12,7 @@ import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -67,8 +68,9 @@ public final class XXOKHttpUtils {
     public <T> List<T> getList() throws IOException, XXOKHttpException {
         Gson gson = new Gson();
         ResponseBody body = post();
-        return gson.fromJson(body.charStream(), new TypeToken<List<T>>() {
-        }.getType());
+        Type type = new TypeToken<List<T>>() {
+        }.getType();
+        return gson.fromJson(body.charStream(), type);
     }
 
     /**
@@ -104,8 +106,11 @@ public final class XXOKHttpUtils {
             requestBuilder.post(builder.body);
         }
         Response response = client.newCall(requestBuilder.build()).execute();
-        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-        return response.body();
+        if (!response.isSuccessful()) {
+            throw new IOException("Unexpected code " + response);
+        } else {
+            return response.body();
+        }
     }
 
     /**
