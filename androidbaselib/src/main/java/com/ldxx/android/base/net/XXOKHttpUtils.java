@@ -1,7 +1,9 @@
 package com.ldxx.android.base.net;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.ldxx.utils.StringUtils;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.Headers;
@@ -12,7 +14,7 @@ import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -49,12 +51,10 @@ public final class XXOKHttpUtils {
      * @throws IOException       IO异常
      * @throws XXOKHttpException 参数异常
      */
-    public <T> T getObject() throws IOException, XXOKHttpException {
+    public <T> T getObject(Class<T> classOfT) throws IOException, XXOKHttpException {
         Gson gson = new Gson();
         ResponseBody body = post();
-        //System.out.println(body.string());
-        //System.out.println(builder.classOfT.getSimpleName());
-        return (T) gson.fromJson(body.string(), builder.classOfT);
+        return gson.fromJson(body.string(), classOfT);
     }
 
     /**
@@ -65,12 +65,16 @@ public final class XXOKHttpUtils {
      * @throws IOException       IO异常
      * @throws XXOKHttpException 请求参数设置异常
      */
-    public <T> List<T> getList() throws IOException, XXOKHttpException {
-        Gson gson = new Gson();
+    public <T> List<T> getList(Class<T> classOfT) throws IOException, XXOKHttpException {
+
         ResponseBody body = post();
-        Type type = new TypeToken<List<T>>() {
-        }.getType();
-        return gson.fromJson(body.charStream(), type);
+        Gson gson = new Gson();
+        List<T> lst = new ArrayList<>();
+        JsonArray array = new JsonParser().parse(body.charStream()).getAsJsonArray();
+        for (final JsonElement elem : array) {
+            lst.add(gson.fromJson(elem, classOfT));
+        }
+        return lst;
     }
 
     /**
@@ -106,21 +110,15 @@ public final class XXOKHttpUtils {
             requestBuilder.post(builder.body);
         }
         Response response = client.newCall(requestBuilder.build()).execute();
-        if (!response.isSuccessful()) {
-            throw new IOException("Unexpected code " + response);
-        } else {
-            return response.body();
-        }
+        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        return response.body();
     }
 
     /**
      * OKHttp 参数封装类
-     *
-     * @param <T> 类型
      */
-    public static class Builder<T> {
+    public static class Builder {
         private String url;
-        private Class<T> classOfT;
         private Headers header;
         private RequestBody body;
 
@@ -236,17 +234,6 @@ public final class XXOKHttpUtils {
          */
         public Builder header(Headers header) {
             this.header = header;
-            return this;
-        }
-
-        /**
-         * 设置请求返回值的类型
-         *
-         * @param classOfT 类型
-         * @return 返回构造类对象
-         */
-        public Builder obj(Class<T> classOfT) {
-            this.classOfT = classOfT;
             return this;
         }
 
