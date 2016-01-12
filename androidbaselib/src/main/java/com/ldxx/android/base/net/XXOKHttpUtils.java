@@ -70,10 +70,14 @@ public final class XXOKHttpUtils {
         ResponseBody body = post();
         Gson gson = new Gson();
         List<T> lst = new ArrayList<>();
-        JsonArray array = new JsonParser().parse(body.charStream()).getAsJsonArray();
-        for (final JsonElement elem : array) {
-            lst.add(gson.fromJson(elem, classOfT));
+        JsonElement parser = new JsonParser().parse(body.charStream());
+        if (!parser.isJsonNull()) {
+            JsonArray array = parser.getAsJsonArray();
+            for (final JsonElement elem : array) {
+                lst.add(gson.fromJson(elem, classOfT));
+            }
         }
+
         return lst;
     }
 

@@ -16,7 +16,7 @@ public class Test {
     public static final String TRAIN_QUERY = "http://a.apix.cn/apixlife/ticket/rest?from=BJP&to=TJP&date=2015-12-28";
 
     public static void main(String[] args) {
-        String url ="http://192.168.0.71:8080/XXLotteryMVC//recommend/getHistoryRecommends.do";
+        String url ="http://127.0.0.1:8080/XXLotteryMVC//recommend/getHistoryRecommends.do";
         XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
         XXOKHttpUtils utils =builder.url(url).body("num","5").build();
         try {

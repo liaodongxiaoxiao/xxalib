@@ -59,12 +59,11 @@ public class CustomJsonViewActivity extends AppCompatActivity {
         public void run() {
             XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
             //
-            builder.obj(XXPM25.class)
-                    .url(URL)
+            builder.url(URL)
                     .header("apikey", "d6e91c2b841ef37858964106aa83749c");
             XXOKHttpUtils utils = builder.build();
             try {
-                final XXPM25 pm = utils.getObject();
+                final XXPM25 pm = utils.getObject(XXPM25.class);
                 //System.out.print(pm.toString());
                 Log.e(TAG, "run: " + pm.toString());
                 Thread.sleep(2000L);
