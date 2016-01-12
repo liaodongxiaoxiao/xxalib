@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.ldxx.xxalib"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -22,7 +22,11 @@ android {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 }
-
+repositories {
+    maven {
+        url  "http://dl.bintray.com/novoda/maven"
+    }
+}
 ext {
     archivesBaseName = "ldxx-${android.defaultConfig.versionName}"
     supportLibVersion = '23.1.0'
@@ -43,4 +47,6 @@ dependencies {
 
     compile 'io.realm:realm-android:0.87.0'
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+
+    compile 'com.novoda:simple-chrome-custom-tabs:0.1.1'
 }

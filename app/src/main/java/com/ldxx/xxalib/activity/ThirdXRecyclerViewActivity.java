@@ -1,5 +1,7 @@
 package com.ldxx.xxalib.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -19,6 +22,10 @@ import com.ldxx.xxalib.contentprovider.NewsContentProvider;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.exception.DbException;
+import com.novoda.simplechromecustomtabs.SimpleChromeCustomTabs;
+import com.novoda.simplechromecustomtabs.navigation.IntentCustomizer;
+import com.novoda.simplechromecustomtabs.navigation.NavigationFallback;
+import com.novoda.simplechromecustomtabs.navigation.SimpleChromeCustomTabsIntentBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +34,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ThirdXRecyclerViewActivity extends AppCompatActivity {
-
+    private static final String TAG = "ThirdXRecyclerViewActivity";
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.x_recycler_view)
@@ -44,13 +51,14 @@ public class ThirdXRecyclerViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_xrecycler_view);
         ButterKnife.bind(this);
-
+        // 初始化SimpleChromeCustomTabs
+        SimpleChromeCustomTabs.initialize(this);
         //设置toolbar
         setSupportActionBar(toolbar);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "共"+mData.size()+"条新闻", Snackbar.LENGTH_LONG)
+                Snackbar.make(v, "共" + mData.size() + "条新闻", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -60,6 +68,16 @@ public class ThirdXRecyclerViewActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         xRecyclerView.setLayoutManager(layoutManager);
         adapter = new XRecycleViewAdapter(this, mData);
+        adapter.setItemClickListener(new XRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                SimpleChromeCustomTabs.getInstance().withFallback(navigationFallback)
+                        .withIntentCustomizer(mCustomizer)
+                        .navigateTo(Uri.parse(mData.get(position).getUrl()), ThirdXRecyclerViewActivity.this);
+            }
+        });
+
+
         xRecyclerView.setAdapter(adapter);
         xRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         //设置分割线
@@ -77,6 +95,26 @@ public class ThirdXRecyclerViewActivity extends AppCompatActivity {
             }
         });
     }
+
+    private final NavigationFallback navigationFallback = new NavigationFallback() {
+        @Override
+        public void onFallbackNavigateTo(Uri url) {
+            Toast.makeText(getApplicationContext(), "application_not_found", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(Intent.ACTION_VIEW)
+                    .setData(url)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    };
+
+    private final IntentCustomizer mCustomizer = new IntentCustomizer(){
+
+        @Override
+        public SimpleChromeCustomTabsIntentBuilder onCustomiseIntent(SimpleChromeCustomTabsIntentBuilder builder) {
+            return builder.showingTitle().withToolbarColor(getResources().getColor(R.color.colorPrimary));
+        }
+    };
 
 
     private void initData() {
@@ -131,4 +169,15 @@ public class ThirdXRecyclerViewActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SimpleChromeCustomTabs.getInstance().connectTo(this);
+    }
+
+    @Override
+    protected void onPause() {
+        SimpleChromeCustomTabs.getInstance().disconnectFrom(this);
+        super.onPause();
+    }
 }

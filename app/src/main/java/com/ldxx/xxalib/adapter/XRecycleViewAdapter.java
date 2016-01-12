@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -24,8 +23,9 @@ import java.util.List;
 public class XRecycleViewAdapter extends RecyclerView.Adapter<XRecycleViewAdapter.XViewHolder> {
     private List<XXNewsInfo> data;
     private LayoutInflater inflater;
+    private OnItemClickListener mItemClickListener;
 
-    public XRecycleViewAdapter(Context context,List<XXNewsInfo> data) {
+    public XRecycleViewAdapter(Context context, List<XXNewsInfo> data) {
         this.data = data;
         inflater = LayoutInflater.from(context);
         Fresco.initialize(context);
@@ -37,13 +37,21 @@ public class XRecycleViewAdapter extends RecyclerView.Adapter<XRecycleViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(XViewHolder holder, int position) {
+    public void onBindViewHolder(XViewHolder holder, final int position) {
         XXNewsInfo ni = data.get(position);
         holder.title.setText(ni.getTitle());
         holder.content.setText(ni.getUrl());
         holder.date.setText(ni.getCreate_time());
         Uri uri = Uri.parse(ni.getImage_src());
         holder.imageView.setImageURI(uri);
+        if (mItemClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mItemClickListener.OnItemClick(v, position);
+                }
+            });
+        }
 
     }
 
@@ -79,5 +87,13 @@ public class XRecycleViewAdapter extends RecyclerView.Adapter<XRecycleViewAdapte
             love = (TextView) itemView.findViewById(R.id.r_love);
 
         }
+    }
+
+    public interface OnItemClickListener {
+        void OnItemClick(View view, int position);
+    }
+
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        mItemClickListener = itemClickListener;
     }
 }
