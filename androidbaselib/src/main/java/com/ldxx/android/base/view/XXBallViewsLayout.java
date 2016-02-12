@@ -173,44 +173,55 @@ public class XXBallViewsLayout extends GridView {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            final ViewHolder viewHolder;
+
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.xxballview_gridview_item, parent, false);
+                viewHolder = new ViewHolder();
+                viewHolder.ballView = (XXBallView) convertView.findViewById(R.id.ball_view);
+                convertView.setTag(viewHolder);
+            }else {
+                viewHolder = (ViewHolder) convertView.getTag();
             }
-            final XXBallView ballView = (XXBallView) convertView.findViewById(R.id.ball_view);
+
             final BallInfo ball = balls.get(position);
-            ballView.setIsSelectable(isSelectable);
-            ballView.setText(ball.getNum());
-            ballView.setBallColor(ball.getColor());
-            ballView.setIsSelectable(false);
+            viewHolder.ballView.setIsSelectable(isSelectable);
+            viewHolder.ballView.setText(ball.getNum());
+            viewHolder.ballView.setBallColor(ball.getColor());
+            viewHolder.ballView.setIsSelectable(false);
             if (ball.isChecked() || isChecked(ball.getNum())) {
                 if(!selectedBalls.contains(ball.getNum())){
                     selectedBalls.add(ball.getNum());
                 }
-                ballView.setChecked(true);
+                viewHolder.ballView.setChecked(true);
             } else {
-                ballView.setChecked(false);
+                viewHolder.ballView.setChecked(false);
                 selectedBalls.remove(ball.getNum());
             }
 
-            ballView.setTextSize(textSize);
+            viewHolder.ballView.setTextSize(textSize);
 
-            ballView.setOnClickListener(new OnClickListener() {
+            viewHolder.ballView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //Toast.makeText(context, ball.getNum(), Toast.LENGTH_SHORT).show();
                     if (isSelectable) {
 
-                        if (ballView.isSelected()) {
-                            ballView.setChecked(false);
+                        if (viewHolder.ballView.isSelected()) {
+                            viewHolder.ballView.setChecked(false);
                             selectedBalls.remove(ball.getNum());
                         } else {
-                            ballView.setChecked(true);
+                            viewHolder.ballView.setChecked(true);
                             selectedBalls.add(ball.getNum());
                         }
                     }
                 }
             });
             return convertView;
+        }
+
+        class ViewHolder{
+            private XXBallView ballView;
         }
     }
 
