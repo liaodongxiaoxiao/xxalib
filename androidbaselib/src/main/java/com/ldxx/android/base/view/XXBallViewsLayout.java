@@ -134,11 +134,17 @@ public class XXBallViewsLayout extends GridView {
         return XXUtils.listToOrderString(selectedBalls, desc);
     }
 
+    /**
+     * 设置球码
+     * @param ball 球码，对个值以英文逗号隔开
+     */
     public void setBalls(String ball) {
         if (TextUtils.isEmpty(ball)) {
             return;
         }
         this.ballNums = ball;
+        //先清空，防止用在listview或RecleverView中出现串结果问题
+        this.balls.clear();
         initViewByBalls();
     }
 
