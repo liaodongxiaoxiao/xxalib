@@ -12,16 +12,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.ldxx.android.base.net.OKHttpBaseUtils;
+import com.ldxx.android.base.net.XXOKHttpException;
+import com.ldxx.android.base.net.XXOKHttpUtils;
 import com.ldxx.utils.DateUtils;
 import com.ldxx.xxalib.R;
 import com.ldxx.xxalib.beans.XXWeather;
 import com.ldxx.xxalib.utils.WeatherUtils;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
-import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -72,6 +70,7 @@ public class CaseHttpActivity extends AppCompatActivity {
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.btn_color1, R.color.xx_blue, R.color.btn_color2, R.color
                 .btn_color3);
+        mSwipeRefreshLayout.setDistanceToTriggerSync(200);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -139,30 +138,36 @@ public class CaseHttpActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... params) {
+
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            Map<String, String> bodys = new HashMap<>();
+            //Map<String, String> bodys = new HashMap<>();
             //bodys.put("cityname", "沈阳");
-            bodys.put("cityid", "101070101");
+            //bodys.put("cityid", "");
 
             Map<String, String> headers = new HashMap<>();
             headers.put("apiKey", "d6e91c2b841ef37858964106aa83749c");
 
             try {
+                XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
+                builder.url("http://apis.baidu.com/apistore/weatherservice/cityid")
+                        .body("cityname","沈阳");
                 //OKHttpPostUtils<XXWeather>.get(XXWeather.class).objectWithPost();
-                ResponseBody body = OKHttpBaseUtils.postBase(URL, headers, bodys);
+                //ResponseBody body = OKHttpBaseUtils.postBase(URL, headers, bodys);
                 //Gson gson = new Gson();
+                String json = builder.build().getString();
 
-                JsonParser parser = new JsonParser();
-                JsonElement tradeElement = parser.parse(body.charStream());
+                //JsonParser parser = new JsonParser();
+                //JsonElement tradeElement = parser.parse(body.charStream());
+                Log.e(TAG, "doInBackground: "+json );
                 //Log.e(TAG, "doInBackground: "+tradeElement );
                 //JsonArray trade = tradeElement.getAsJsonArray();
                 //Log.e(TAG, "doInBackground: "+trade );
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Log.e(TAG, "Error: " + e.getMessage());
                 //mEmptyInfo.setVisibility(View.VISIBLE);
             }
@@ -175,6 +180,14 @@ public class CaseHttpActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             setWeatherInfo(loadData());
         }
+    }
+
+    public static void main(String[] args) throws IOException, XXOKHttpException {
+        XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
+        builder.url("http://apis.baidu.com/apistore/weatherservice/cityid").header("apiKey", "d6e91c2b841ef37858964106aa83749c")
+                .body("cityname","沈阳");
+        String json = builder.build().getString();
+        System.out.println(json);
     }
 
 }

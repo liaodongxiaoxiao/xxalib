@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "[MainActivity]";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -74,8 +75,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        int fragments = getFragmentManager().getBackStackEntryCount();
+        //Log.e(TAG, "onBackPressed: "+fragments );
+        if (fragments > 0) {
             super.onBackPressed();
+        }else {
+            finish();
         }
     }
 
@@ -95,7 +101,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            startActivity(new Intent(MainActivity.this,SettingsActivity.class));
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         }
 
