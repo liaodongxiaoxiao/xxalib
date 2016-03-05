@@ -3,6 +3,7 @@ package com.ldxx.xxalib.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import java.util.List;
  * liaodongxiaoxiao@gmail.com
  */
 public class XRecycleViewAdapter extends RecyclerView.Adapter<XRecycleViewAdapter.XViewHolder> {
+    private static final String TAG = "XRecycleViewAdapter";
     private List<XXNewsInfo> data;
     private LayoutInflater inflater;
     private OnItemClickListener mItemClickListener;
@@ -38,6 +40,7 @@ public class XRecycleViewAdapter extends RecyclerView.Adapter<XRecycleViewAdapte
 
     @Override
     public void onBindViewHolder(XViewHolder holder, final int position) {
+        Log.e(TAG, "onBindViewHolder: "+position );
         XXNewsInfo ni = data.get(position);
         holder.title.setText(ni.getTitle());
         holder.content.setText(ni.getUrl());

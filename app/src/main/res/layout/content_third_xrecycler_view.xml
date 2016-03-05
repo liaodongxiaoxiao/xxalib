@@ -12,8 +12,15 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.ThirdXRecyclerViewActivity"
     tools:showIn="@layout/activity_third_xrecycler_view">
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
+    <TextView
+        android:id="@+id/empty"
+        android:text="No Data"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.ldxx.android.base.view.XXRecyclerView
         android:id="@+id/x_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </RelativeLayout>

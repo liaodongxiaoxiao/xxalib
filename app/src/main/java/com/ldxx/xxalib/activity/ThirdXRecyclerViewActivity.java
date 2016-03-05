@@ -10,10 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.ldxx.android.base.view.XXRecyclerView;
 import com.ldxx.xxalib.R;
 import com.ldxx.xxalib.adapter.XRecycleViewAdapter;
 import com.ldxx.xxalib.beans.DividerItemDecoration;
@@ -38,9 +40,11 @@ public class ThirdXRecyclerViewActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.x_recycler_view)
-    XRecyclerView xRecyclerView;
+    XXRecyclerView xRecyclerView;
     @Bind(R.id.fab)
     FloatingActionButton fab;
+    @Bind(R.id.empty)
+    TextView mEmpty;
 
     private XRecycleViewAdapter adapter;
     private List<XXNewsInfo> mData = new ArrayList<>();
@@ -77,7 +81,7 @@ public class ThirdXRecyclerViewActivity extends AppCompatActivity {
             }
         });
 
-
+        xRecyclerView.setEmptyView(mEmpty);
         xRecyclerView.setAdapter(adapter);
         xRecyclerView.setLaodingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         //设置分割线
@@ -108,7 +112,7 @@ public class ThirdXRecyclerViewActivity extends AppCompatActivity {
         }
     };
 
-    private final IntentCustomizer mCustomizer = new IntentCustomizer(){
+    private final IntentCustomizer mCustomizer = new IntentCustomizer() {
 
         @Override
         public SimpleChromeCustomTabsIntentBuilder onCustomiseIntent(SimpleChromeCustomTabsIntentBuilder builder) {

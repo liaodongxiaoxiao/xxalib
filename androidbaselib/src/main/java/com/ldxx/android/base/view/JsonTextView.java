@@ -103,6 +103,11 @@ public class JsonTextView extends TextView {
 
     }
 
+    /**
+     * 简单判断字符串是不是json格式
+     * @param json 要判断的字符串
+     * @return 返回是否是字符串
+     */
     private static boolean isJsonStr(String json) {
         return json.startsWith("{") && json.endsWith("}")
                 && (numberOfStr(json, "[{]") == numberOfStr(json, "[}]"));
