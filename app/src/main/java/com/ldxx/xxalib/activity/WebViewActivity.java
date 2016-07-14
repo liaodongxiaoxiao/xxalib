@@ -66,7 +66,6 @@ public class WebViewActivity extends AppCompatActivity {
             Log.e(TAG, "onBackPressed: " + historyUrl);
         }
 
-
         if (webView.canGoBack()) {
             webView.goBack();
             return;
