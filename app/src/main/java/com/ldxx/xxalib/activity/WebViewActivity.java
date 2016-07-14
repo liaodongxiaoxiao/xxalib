@@ -63,7 +63,7 @@ public class WebViewActivity extends AppCompatActivity {
         int position = mWebBackForwardList.getCurrentIndex() - 1;
         if (position >= 0) {
             String historyUrl = mWebBackForwardList.getItemAtIndex(position).getUrl();
-            Log.e(TAG, "onBackPressed: " + historyUrl);
+            Log.e(TAG, "historyUrl: " + historyUrl);
         }
 
         if (webView.canGoBack()) {
