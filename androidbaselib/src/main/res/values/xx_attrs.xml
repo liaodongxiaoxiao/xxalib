@@ -27,4 +27,8 @@
         <attr name="menu_color" format="color"/>
         <attr name="menu_selected_color" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name ="DashedLine">
+        <attr name = "line_color" format= "color" />
+    </declare-styleable >
 </resources>
