@@ -10,6 +10,15 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ldxx.xxalib.activity.CustomJsonViewActivity"
     tools:showIn="@layout/activity_custom_json_view">
+    <com.ldxx.android.base.view.GradientTextView
+        android:text="JsonView 使用 -- JsonView Use"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:start_color="@color/cardview_dark_background"
+        app:end_color="@color/btn_color3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btn_pm"
         android:layout_width="wrap_content"
