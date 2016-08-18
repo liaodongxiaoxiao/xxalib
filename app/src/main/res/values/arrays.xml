@@ -60,18 +60,21 @@
         <item>BufferKnife</item>
         <item>XRecycleView</item>
         <item>Realm</item>
+        <item>Retrofit2</item>
     </array>
     <array name="third_fragment_value">
         <item>com.ldxx.xxalib.activity.ThirdFrescoActivity</item>
         <item>com.ldxx.xxalib.activity.ThirdButterKnifeActivity</item>
         <item>com.ldxx.xxalib.activity.ThirdXRecyclerViewActivity</item>
         <item>com.ldxx.xxalib.activity.ThirdRealmActivity</item>
+        <item>com.ldxx.xxalib.activity.ThirdRetrofitActivity</item>
     </array>
     <array name="third_fragment_description">
         <item>Fresco 是有Facebook推出的强大开源库</item>
         <item>Butter Knife 是由JakeWharton大神出品的View injection lib.</item>
         <item>第三方RecyclerView，完美的支持下拉上拉刷新等功能</item>
         <item>Realm ORM框架，支持加密等，比SQLite更快</item>
+        <item>Retrofit2框架使用</item>
     </array>
 
     <array name="case_fragment_title">

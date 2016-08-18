@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.ldxx.xxalib"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ldxx.xxalib">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -15,141 +15,124 @@
         <activity
             android:name=".activity.WebViewActivity"
             android:label="@string/title_activity_web_view"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.CarViewActivity"
             android:label="@string/title_activity_car_view"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.TextFontsActivity"
             android:label="@string/title_activity_text_fonts"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CustomXXBallViewActivity"
             android:label="@string/title_activity_custom_xxball_view"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.ThirdFrescoActivity"
             android:label="@string/title_activity_third_fresco"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CommonCollapsingToolbarLayoutActivity"
             android:label="@string/title_activity_common_collapsing_toolbar_layout"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CommonTabLayoutActivity"
             android:label="@string/title_activity_common_tab_layout"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CaseHomeImageShowActivity"
             android:label="@string/title_activity_case_home_image_show"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service
             android:name=".service.LoadDataIntentService"
-            android:exported="false"/>
+            android:exported="false" />
 
         <provider
             android:name=".contentprovider.NewsContentProvider"
             android:authorities="${applicationId}.news.contentprovider"
-            android:exported="false"/>
+            android:exported="false" />
         <provider
             android:name=".contentprovider.DateDataContentProvider"
             android:authorities="${applicationId}.contentprovider.DateDataContentProvider"
-            android:exported="false"/>
+            android:exported="false" />
 
         <activity
             android:name=".activity.CommonRecyclerViewActivity"
             android:label="@string/title_activity_common_recycler_view"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CaseHttpActivity"
             android:label="@string/title_activity_case_http"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.CaseDataChangeActivity"
             android:label="@string/title_activity_case_data_change"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.CaseXMLActivity"
             android:label="@string/title_activity_case_xml"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.SettingsActivity"
-            android:label="@string/title_activity_settings">
-        </activity>
+            android:label="@string/title_activity_settings"></activity>
         <activity
             android:name=".activity.ThirdButterKnifeActivity"
             android:label="@string/title_activity_third_butter_knife"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.CommonDimensionActivity"
             android:label="@string/title_activity_common_dimension"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.CaseMusicPlayActivity"
             android:label="@string/title_activity_case_music_play"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <service
             android:name=".service.MusicPlayService"
-            android:exported="false">
-        </service>
+            android:exported="false"></service>
 
         <activity
             android:name=".activity.CustomCircleViewActivity"
             android:label="@string/title_activity_custom_circle_view"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.ThirdXRecyclerViewActivity"
             android:label="@string/title_activity_third_xrecycler_view"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.CustomJsonViewActivity"
             android:label="@string/title_activity_custom_json_view"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.ThirdRealmActivity"
             android:label="@string/title_activity_third_realm"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.AnimationCurvedFabRevealActivity"
             android:label="@string/title_activity_animation_curved_fab_reveal"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.CommonStatusBarActivity"
             android:label="@string/title_activity_common_status_bar"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".activity.CommonDataBindingActivity">
-        </activity>
-        <activity android:name=".activity.CaseFragmentUseActivity">
-        </activity>
-        <activity android:name=".activity.CaseWindowManagerActivity">
-        </activity>
-        <activity android:name=".activity.CommonVectorDrawableActivity">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.CommonDataBindingActivity"></activity>
+        <activity android:name=".activity.CaseFragmentUseActivity"></activity>
+        <activity android:name=".activity.CaseWindowManagerActivity"></activity>
+        <activity android:name=".activity.CommonVectorDrawableActivity"></activity>
+        <activity android:name=".activity.ThirdRetrofitActivity"></activity>
     </application>
 
 </manifest>
