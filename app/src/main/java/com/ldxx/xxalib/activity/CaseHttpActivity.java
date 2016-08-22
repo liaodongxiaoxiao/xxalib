@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ldxx.android.base.net.XXOKHttpException;
-import com.ldxx.android.base.net.XXOKHttpUtils;
+//import com.ldxx.android.base.net.XXOKHttpException;
+//import com.ldxx.android.base.net.XXOKHttpUtils;
 import com.ldxx.utils.DateUtils;
 import com.ldxx.xxalib.R;
 import com.ldxx.xxalib.beans.XXWeather;
@@ -153,17 +153,17 @@ public class CaseHttpActivity extends AppCompatActivity {
             headers.put("apiKey", "d6e91c2b841ef37858964106aa83749c");
 
             try {
-                XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
-                builder.url("http://apis.baidu.com/apistore/weatherservice/cityid")
-                        .body("cityname","沈阳");
+                //XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
+                //builder.url("http://apis.baidu.com/apistore/weatherservice/cityid")
+                //        .body("cityname","沈阳");
                 //OKHttpPostUtils<XXWeather>.get(XXWeather.class).objectWithPost();
                 //ResponseBody body = OKHttpBaseUtils.postBase(URL, headers, bodys);
                 //Gson gson = new Gson();
-                String json = builder.build().getString();
+                //String json = builder.build().getString();
 
                 //JsonParser parser = new JsonParser();
                 //JsonElement tradeElement = parser.parse(body.charStream());
-                Log.e(TAG, "doInBackground: "+json );
+                //Log.e(TAG, "doInBackground: "+json );
                 //Log.e(TAG, "doInBackground: "+tradeElement );
                 //JsonArray trade = tradeElement.getAsJsonArray();
                 //Log.e(TAG, "doInBackground: "+trade );
@@ -182,12 +182,12 @@ public class CaseHttpActivity extends AppCompatActivity {
         }
     }
 
-    public static void main(String[] args) throws IOException, XXOKHttpException {
-        XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
-        builder.url("http://apis.baidu.com/apistore/weatherservice/cityid").header("apiKey", "d6e91c2b841ef37858964106aa83749c")
-                .body("cityname","沈阳");
-        String json = builder.build().getString();
-        System.out.println(json);
+    public static void main(String[] args) throws IOException{//, XXOKHttpException {
+        //XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
+        //builder.url("http://apis.baidu.com/apistore/weatherservice/cityid").header("apiKey", "d6e91c2b841ef37858964106aa83749c")
+        //        .body("cityname","沈阳");
+        //String json = builder.build().getString();
+        //System.out.println(json);
     }
 
 }

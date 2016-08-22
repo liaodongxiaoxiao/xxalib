@@ -39,10 +39,9 @@ dependencies {
     compile 'io.realm:realm-android:0.87.0'
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
     compile 'com.novoda:simple-chrome-custom-tabs:0.1.1'
-
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-
+    
     compile supportDependencies.vectorDrawable
     compile supportDependencies.animatedVectorDrawable
     compile supportDependencies.design

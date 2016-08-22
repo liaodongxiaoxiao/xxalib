@@ -8,14 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.ldxx.android.base.bean.XXPM25;
-import com.ldxx.android.base.net.XXOKHttpUtils;
+//import com.ldxx.android.base.net.XXOKHttpUtils;
 import com.ldxx.android.base.view.JsonTextView;
 import com.ldxx.xxalib.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.ldxx.xxalib.beans.XXPM25;
 
 public class CustomJsonViewActivity extends AppCompatActivity {
     private static final String TAG = "CustomJsonViewActivity";
@@ -57,22 +57,22 @@ public class CustomJsonViewActivity extends AppCompatActivity {
 
         @Override
         public void run() {
-            XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
+            //XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
             //
-            builder.url(URL)
-                    .header("apikey", "d6e91c2b841ef37858964106aa83749c");
-            XXOKHttpUtils utils = builder.build();
+            //builder.url(URL)
+            //        .header("apikey", "d6e91c2b841ef37858964106aa83749c");
+            //XXOKHttpUtils utils = builder.build();
             try {
-                final XXPM25 pm = utils.getObject(XXPM25.class);
+               // final XXPM25 pm = utils.getObject(XXPM25.class);
                 //System.out.print(pm.toString());
-                Log.e(TAG, "run: " + pm.toString());
+               // Log.e(TAG, "run: " + pm.toString());
                 Thread.sleep(2000L);
-                runOnUiThread(new Runnable() {
+               /* runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         pmJson.setText(pm.toString());
                     }
-                });
+                });*/
 
 
             } catch (Exception e) {

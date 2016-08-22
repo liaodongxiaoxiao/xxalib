@@ -1,4 +1,4 @@
-package com.ldxx.android.base.bean;
+package com.ldxx.xxalib.beans;
 
 /**
  * Created by LDXX on 2015/12/24.

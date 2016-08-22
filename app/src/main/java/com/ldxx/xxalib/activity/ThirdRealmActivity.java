@@ -19,7 +19,7 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.ldxx.android.base.net.XXOKHttpUtils;
+//import com.ldxx.android.base.net.XXOKHttpUtils;
 import com.ldxx.android.base.view.JsonTextView;
 import com.ldxx.utils.DateUtils;
 import com.ldxx.xxalib.R;
@@ -206,13 +206,13 @@ public class ThirdRealmActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... params) {
-            XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
-            builder.url(URL).header("apikey", KEY);
-            XXOKHttpUtils utils = builder.build();
+            //XXOKHttpUtils.Builder builder = new XXOKHttpUtils.Builder();
+            //builder.url(URL).header("apikey", KEY);
+            //XXOKHttpUtils utils = builder.build();
             try {
-                String str = utils.getString();
-                Log.e(TAG, "str: " + str);
-                if (!TextUtils.isEmpty(str)) {
+                //String str = utils.getString();
+                //Log.e(TAG, "str: " + str);
+                /*if (!TextUtils.isEmpty(str)) {
                     JSONObject obj = new JSONObject(str);
                     Gson gson = getGson();
 
@@ -273,7 +273,7 @@ public class ThirdRealmActivity extends AppCompatActivity {
                     }
                 } else {
                     Log.e(TAG, "doInBackground: " + "查询失败");
-                }
+                }*/
 
 
                 //Log.e(TAG, "doInBackground: " + str);
