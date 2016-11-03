@@ -75,64 +75,65 @@
         <activity
             android:name=".activity.CaseHttpActivity"
             android:label="@string/title_activity_case_http"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CaseDataChangeActivity"
             android:label="@string/title_activity_case_data_change"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CaseXMLActivity"
             android:label="@string/title_activity_case_xml"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
         <activity
             android:name=".activity.ThirdButterKnifeActivity"
             android:label="@string/title_activity_third_butter_knife"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CommonDimensionActivity"
             android:label="@string/title_activity_common_dimension"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CaseMusicPlayActivity"
             android:label="@string/title_activity_case_music_play"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service
             android:name=".service.MusicPlayService"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <activity
             android:name=".activity.CustomCircleViewActivity"
             android:label="@string/title_activity_custom_circle_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.ThirdXRecyclerViewActivity"
             android:label="@string/title_activity_third_xrecycler_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CustomJsonViewActivity"
             android:label="@string/title_activity_custom_json_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.ThirdRealmActivity"
             android:label="@string/title_activity_third_realm"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.AnimationCurvedFabRevealActivity"
             android:label="@string/title_activity_animation_curved_fab_reveal"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CommonStatusBarActivity"
             android:label="@string/title_activity_common_status_bar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activity.CommonDataBindingActivity"></activity>
-        <activity android:name=".activity.CaseFragmentUseActivity"></activity>
-        <activity android:name=".activity.CaseWindowManagerActivity"></activity>
-        <activity android:name=".activity.CommonVectorDrawableActivity"></activity>
-        <activity android:name=".activity.ThirdRetrofitActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.CommonDataBindingActivity" />
+        <activity android:name=".activity.CaseFragmentUseActivity" />
+        <activity android:name=".activity.CaseWindowManagerActivity" />
+        <activity android:name=".activity.CommonVectorDrawableActivity" />
+        <activity android:name=".activity.ThirdRetrofitActivity" />
+        <activity android:name=".activity.CommonSearchViewActivity"></activity>
     </application>
 
 </manifest>
