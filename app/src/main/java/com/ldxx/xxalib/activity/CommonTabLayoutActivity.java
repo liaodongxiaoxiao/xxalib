@@ -32,13 +32,6 @@ public class CommonTabLayoutActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
         initTab();
 
     }
@@ -48,6 +41,11 @@ public class CommonTabLayoutActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new TabPagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
+
+        TabLayout tabLayout1 = (TabLayout) findViewById(R.id.tab1);
+        ViewPager viewPager1 = (ViewPager) findViewById(R.id.viewpager1);
+        viewPager1.setAdapter(new TabPagerAdapter(getSupportFragmentManager()));
+        tabLayout1.setupWithViewPager(viewPager1);
     }
 
     class TabPagerAdapter extends FragmentPagerAdapter {
