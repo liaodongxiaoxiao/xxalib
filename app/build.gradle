@@ -13,6 +13,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -41,9 +42,7 @@ dependencies {
     compile 'com.novoda:simple-chrome-custom-tabs:0.1.1'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    
-    compile supportDependencies.vectorDrawable
-    compile supportDependencies.animatedVectorDrawable
+
     compile supportDependencies.design
     compile supportDependencies.cardView
 }

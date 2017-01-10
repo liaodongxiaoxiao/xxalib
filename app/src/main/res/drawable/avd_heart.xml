@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:drawable="@drawable/heart">
+
+    <target android:name="heart">
+        <aapt:attr name="android:animation" >
+            <set
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:ordering="together">
+            <objectAnimator
+                android:propertyName="scaleX"
+                android:repeatCount="infinite"
+                android:repeatMode="reverse"
+                android:duration="300"
+                android:valueTo="2"/>
+            <objectAnimator
+                android:propertyName="scaleY"
+                android:repeatCount="infinite"
+                android:repeatMode="reverse"
+                android:duration="300"
+                android:valueTo="2"/>
+            </set>
+        </aapt:attr>
+    </target>
+
+
+
+</animated-vector>
