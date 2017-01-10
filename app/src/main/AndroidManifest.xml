@@ -133,7 +133,8 @@
         <activity android:name=".activity.CaseWindowManagerActivity" />
         <activity android:name=".activity.CommonVectorDrawableActivity" />
         <activity android:name=".activity.ThirdRetrofitActivity" />
-        <activity android:name=".activity.CommonSearchViewActivity"></activity>
+        <activity android:name=".activity.CommonSearchViewActivity" />
+        <activity android:name=".activity.CommonCalendarViewActivity"></activity>
     </application>
 
 </manifest>

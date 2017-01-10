@@ -2,6 +2,7 @@
 <resources>
     <!-- for CommonFragment -->
     <array name="common_fragment_title">
+        <item>CalendarView</item>
         <item>SearchView</item>
         <item>CollapsingTL</item>
         <item>TabLayout</item>
@@ -15,6 +16,7 @@
         <item>Vector Drawable</item>
     </array>
     <array name="common_fragment_value">
+        <item>com.ldxx.xxalib.activity.CommonCalendarViewActivity</item>
         <item>com.ldxx.xxalib.activity.CommonSearchViewActivity</item>
         <item>com.ldxx.xxalib.activity.CommonCollapsingToolbarLayoutActivity</item>
         <item>com.ldxx.xxalib.activity.CommonTabLayoutActivity</item>
@@ -28,6 +30,7 @@
         <item>com.ldxx.xxalib.activity.CommonVectorDrawableActivity</item>
     </array>
     <array name="common_fragment_description">
+        <item>CalendarView使用</item>
         <item>SearchView使用</item>
         <item>CollapsingToolbarLayout使用</item>
         <item>TabLayout+ViewPager</item>
